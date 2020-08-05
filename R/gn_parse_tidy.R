@@ -5,27 +5,35 @@
 #' @export
 #' @param x (character) vector of scientific names
 #' @param threads (integer/numeric) xxx. default: 4
-#' @return list of two data.frames:
-#' 
-#' - meta: metadata
-#' - names: names and their parts, varies based on function parameters
-#' 
+#' @return a data.frame
 #' @examples
 #' x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' gn_parse_tidy(x[1])
 #' gn_parse_tidy(x[2])
 #' gn_parse_tidy(x[3])
+#' gn_parse_tidy(x)
+#' spp <- taxize::names_list("species", 1000)
+#' system.time(gn_parse_tidy(spp))
+#' system.time(gn_parse_file(spp))
 gn_parse_tidy <- function(x, threads = 4) {
   gnparser_exists()
 
   assert(x, "character")
   assert(threads, c("integer", "numeric"))
 
-  args <- character(0)
-  if (!is.null(threads)) args <- c(args, "-j", threads)
+  file <- tempfile(fileext = ".txt")
+  on.exit(unlink(file))
+  cat(x, file = file, sep = "\n")
+  readr::read_csv(gn_parse_one(file, threads = threads))
+}
 
+gn_parse_one <- function(x, format = NULL, threads = NULL) {
+  args <- character(0)
+  if (!is.null(format)) args <- c(args, "-f", format)
+  if (!is.null(threads)) args <- c(args, "-j", threads)
   z <- sys::exec_internal("gnparser", c(args, x), error = FALSE)
   err_chk(z)
-  readr::read_csv(rawToChar(z$stdout))
+  return(rawToChar(z$stdout))
+  # readr::read_csv(rawToChar(z$stdout))
 }

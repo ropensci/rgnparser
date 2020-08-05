@@ -4,21 +4,18 @@
 \alias{gn_parse}
 \title{gn_parse}
 \usage{
-gn_parse(x, format = "compact", threads = 4)
+gn_parse(x, format = "compact", threads = NULL)
 }
 \arguments{
 \item{x}{(character) vector of scientific names}
 
-\item{format}{(logical) xxx. default: "compact"}
+\item{format}{(logical) one of "compact" (default) or "pretty"}
 
-\item{threads}{(integer/numeric) xxx. default: 4}
+\item{threads}{(integer/numeric) nubmer of threads to run. CPU's threads number
+is the default}
 }
 \value{
-list of two data.frames:
-\itemize{
-\item meta: metadata
-\item names: names and their parts, varies based on function parameters
-}
+a list
 }
 \description{
 extract names using gnparser
@@ -29,4 +26,5 @@ x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 gn_parse(x[1])
 gn_parse(x[2])
 gn_parse(x[3])
+gn_parse(x)
 }

@@ -32,3 +32,10 @@ err_chk <- function(z) {
     stop(err, call. = FALSE)
   }
 }
+
+setdf <- function(x) {
+  df <- tibble::as_tibble(
+    data.table::setDF(data.table::rbindlist(x, use.names = TRUE, fill = TRUE))
+  )
+  stats::setNames(df, tolower(names(df)))
+}

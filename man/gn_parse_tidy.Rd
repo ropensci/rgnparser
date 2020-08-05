@@ -12,11 +12,7 @@ gn_parse_tidy(x, threads = 4)
 \item{threads}{(integer/numeric) xxx. default: 4}
 }
 \value{
-list of two data.frames:
-\itemize{
-\item meta: metadata
-\item names: names and their parts, varies based on function parameters
-}
+a data.frame
 }
 \description{
 extract names using gnparser
@@ -27,4 +23,8 @@ x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 gn_parse_tidy(x[1])
 gn_parse_tidy(x[2])
 gn_parse_tidy(x[3])
+gn_parse_tidy(x)
+spp <- taxize::names_list("species", 1000)
+system.time(gn_parse_tidy(spp))
+system.time(gn_parse_file(spp))
 }

@@ -2,6 +2,31 @@ rgnparser
 =========
 
 ```{r, echo=FALSE}
+library("knitr")
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(if (abs(lines[1])>1) more else NULL,
+            x[lines],
+            if (length(x)>lines[abs(length(lines))]) more else NULL
+           )
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -19,7 +44,7 @@ gnparser is required to use this package.
 Installation instructions can be found at the [gnparser repo](https://gitlab.com/gogna/gnparser). 
 
 
-## Install 
+## Installation
 
 ```{r eval=FALSE}
 remotes::install_github("ropensci/rgnparser")
@@ -29,12 +54,34 @@ remotes::install_github("ropensci/rgnparser")
 library("rgnparser")
 ```
 
-## Example
+## Examples
 
-xxxx
+gnparser version
 
 ```{r}
-5
+gn_version()
+```
+
+gnparser version
+
+```{r output.lines=1:15}
+gn_debug("Helianthus annuus var. texanus")
+```
+
+output a data.frame with more minimal information
+
+```{r}
+x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
+  "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
+gn_parse_tidy(x)
+```
+
+output a list of lists with more detailed information
+
+```{r output.lines=1:15}
+x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
+  "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
+gn_parse(x)
 ```
 
 ## Meta
