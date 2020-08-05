@@ -4,7 +4,6 @@
 #' @importFrom tibble as_tibble
 #' @importFrom jsonlite fromJSON
 #' @importFrom readr read_csv
-#' @importFrom data.table rbindlist
 #' @name rgnparser-package
 #' @aliases rgnparser
 #' @docType package

@@ -26,18 +26,23 @@ library("rgnparser")
 
 ## Examples
 
+### gn_version
+
 gnparser version
 
 
 ```r
 gn_version()
+#> $version
+#> [1] "v0.14.1"
 #> 
-#> version: v0.14.1
-#> 
-#> build:   2020-05-07_12:35:40UTC
+#> $build
+#> [1] "2020-05-07_12:35:40UTC"
 ```
 
-gnparser version
+### gn_debug
+
+debug output
 
 
 ```r
@@ -60,6 +65,8 @@ gn_debug("Helianthus annuus var. texanus")
 ...
 ```
 
+### gn_parse_tidy
+
 output a data.frame with more minimal information
 
 
@@ -68,13 +75,30 @@ x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 gn_parse_tidy(x)
 #> # A tibble: 3 x 9
-#>   Id    Verbatim Cardinality CanonicalFull CanonicalSimple CanonicalStem
+#>   id    verbatim cardinality canonicalfull canonicalsimple canonicalstem
 #>   <chr> <chr>          <dbl> <chr>         <chr>           <chr>        
-#> 1 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…
-#> 2 fbd1… Quadrel…           2 Quadrella st… Quadrella stey… Quadrella st…
+#> 1 fbd1… Quadrel…           2 Quadrella st… Quadrella stey… Quadrella st…
+#> 2 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…
 #> 3 e4e1… Parus m…           2 Parus major   Parus major     Parus maior  
-#> # … with 3 more variables: Authorship <chr>, Year <dbl>, Quality <dbl>
+#> # … with 3 more variables: authorship <chr>, year <dbl>, quality <dbl>
 ```
+
+It's pretty fast, thanks to gnparser of course
+
+
+```r
+n <- 10000L
+# get random scientific names from taxize
+spp <- taxize::names_list(rank = "species", size = n)
+timed <- system.time(gn_parse_tidy(spp))
+timed
+#>    user  system elapsed 
+#>   1.020   0.168   0.543
+```
+
+Just 0.543 sec for 10000 names
+
+### gn_parse
 
 output a list of lists with more detailed information
 
@@ -88,16 +112,16 @@ gn_parse(x)
 #> [1] TRUE
 #> 
 #> [[1]]$quality
-#> [1] 1
+#> [1] 3
+#> 
+#> [[1]]$qualityWarnings
+#>      [,1] [,2]                               
+#> [1,] "3"  "HTML tags or entities in the name"
 #> 
 #> [[1]]$verbatim
-#> [1] "Helianthus annuus var. texanus"
+#> [1] "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
 #> 
 #> [[1]]$normalized
-#> [1] "Helianthus annuus var. texanus"
-#> 
-#> [[1]]$cardinality
-#> [1] 3
 ...
 ```
 

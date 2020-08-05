@@ -2,7 +2,7 @@
 % Please edit documentation in R/gn_debug.R
 \name{gn_debug}
 \alias{gn_debug}
-\title{gn_parse}
+\title{gn_debug}
 \usage{
 gn_debug(x, threads = 4)
 }
@@ -15,7 +15,7 @@ gn_debug(x, threads = 4)
 cats output to screen
 }
 \description{
-extract names using gnparser
+debug parsing
 }
 \examples{
 z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",

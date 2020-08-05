@@ -56,17 +56,23 @@ library("rgnparser")
 
 ## Examples
 
+### gn_version
+
 gnparser version
 
 ```{r}
 gn_version()
 ```
 
-gnparser version
+### gn_debug
+
+debug output
 
 ```{r output.lines=1:15}
 gn_debug("Helianthus annuus var. texanus")
 ```
+
+### gn_parse_tidy
 
 output a data.frame with more minimal information
 
@@ -75,6 +81,20 @@ x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 gn_parse_tidy(x)
 ```
+
+It's pretty fast, thanks to gnparser of course
+
+```{r}
+n <- 10000L
+# get random scientific names from taxize
+spp <- taxize::names_list(rank = "species", size = n)
+timed <- system.time(gn_parse_tidy(spp))
+timed
+```
+
+Just `r timed[["elapsed"]]` sec for `r n` names
+
+### gn_parse
 
 output a list of lists with more detailed information
 

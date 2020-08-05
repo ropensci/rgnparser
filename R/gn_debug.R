@@ -1,6 +1,6 @@
-#' gn_parse
+#' gn_debug
 #' 
-#' extract names using gnparser
+#' debug parsing
 #' 
 #' @export
 #' @param x (character) vector of scientific names

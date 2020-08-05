@@ -33,9 +33,7 @@ err_chk <- function(z) {
   }
 }
 
-setdf <- function(x) {
-  df <- tibble::as_tibble(
-    data.table::setDF(data.table::rbindlist(x, use.names = TRUE, fill = TRUE))
-  )
+readcsv <- function(x) {
+  df <- readr::read_csv(x)
   stats::setNames(df, tolower(names(df)))
 }

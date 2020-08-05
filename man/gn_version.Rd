@@ -7,7 +7,7 @@
 gn_version()
 }
 \value{
-prints version information to console, nothing returned
+named list, with \code{version} and \code{build}
 }
 \description{
 get gnparser version information

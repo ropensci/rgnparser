@@ -13,9 +13,6 @@
 #' gn_parse_tidy(x[2])
 #' gn_parse_tidy(x[3])
 #' gn_parse_tidy(x)
-#' spp <- taxize::names_list("species", 1000)
-#' system.time(gn_parse_tidy(spp))
-#' system.time(gn_parse_file(spp))
 gn_parse_tidy <- function(x, threads = 4) {
   gnparser_exists()
 
@@ -25,7 +22,7 @@ gn_parse_tidy <- function(x, threads = 4) {
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))
   cat(x, file = file, sep = "\n")
-  readr::read_csv(gn_parse_one(file, threads = threads))
+  readcsv(gn_parse_one(file, threads = threads))
 }
 
 gn_parse_one <- function(x, format = NULL, threads = NULL) {

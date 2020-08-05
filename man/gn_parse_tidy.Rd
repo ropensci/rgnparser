@@ -24,7 +24,4 @@ gn_parse_tidy(x[1])
 gn_parse_tidy(x[2])
 gn_parse_tidy(x[3])
 gn_parse_tidy(x)
-spp <- taxize::names_list("species", 1000)
-system.time(gn_parse_tidy(spp))
-system.time(gn_parse_file(spp))
 }
