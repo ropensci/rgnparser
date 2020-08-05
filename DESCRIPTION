@@ -1,0 +1,19 @@
+Package: rgnparser
+Title: Parse Scientific Names
+Description: Parse scientific names using gnparser (<https://gitlab.com/gogna/gnparser>).
+Version: 0.0.1.91
+Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
+    email = "myrmecocystus@gmail.com")
+License: MIT + file LICENSE
+URL: https://docs.ropensci.org/rgnparser, https://github.com/ropensci/rgnparser
+BugReports: https://github.com/ropensci/rgnparser/issues
+Roxygen: list(markdown = TRUE)
+Encoding: UTF-8
+Language: en-US
+SystemRequirements: gnparser
+Imports:
+    sys,
+    tibble
+Suggests:
+    testthat
+RoxygenNote: 7.1.1

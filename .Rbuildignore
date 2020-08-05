@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+Makefile
+README.Rmd
+^notes\.md$
+man-roxygen
+^cran-comments\.md$
