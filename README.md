@@ -1,86 +1,44 @@
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-
-reeack
-======
+rgnparser
+=========
 
 
 
-[![Build Status](https://travis-ci.org/ropensci/reeack.svg?branch=master)](https://travis-ci.org/ropensci/reeack)
+[![R-check](https://github.com/ropensci/rgnparser/workflows/R-check/badge.svg)](https://github.com/ropensci/rgnparser/actions/)
 
-## Install Riak
+## Install gnparser
 
-Go to <http://docs.basho.com/riak/kv/2.2.0/> for instructions.
+gnparser is required to use this package.
 
-## Start Riak
+Installation instructions can be found at the [gnparser repo](https://gitlab.com/gogna/gnparser). 
 
-perhaps like:
 
-```sh
-bin/riak start
-```
-
-## Install reeack
+## Install 
 
 
 ```r
-devtools::install_github("ropensci/reeack")
+remotes::install_github("ropensci/rgnparser")
 ```
 
 
 ```r
-library('reeack')
+library("rgnparser")
 ```
 
-## Connect
+## Example
+
+xxxx
 
 
 ```r
-x <- riak()
-```
-
-## Ping the server
-
-
-```r
-x$ping()
-#> [1] TRUE
-```
-
-## Get stats
-
-
-```r
-x$stats()[1:5]
-#> $connected_nodes
-#> list()
-#> 
-#> $consistent_get_objsize_100
-#> [1] 0
-#> 
-#> $consistent_get_objsize_95
-#> [1] 0
-#> 
-#> $consistent_get_objsize_99
-#> [1] 0
-#> 
-#> $consistent_get_objsize_mean
-#> [1] 0
-```
-
-## List keys
-
-
-```r
-x$keys()
-#> $keys
-#> list()
+5
+#> [1] 5
 ```
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/reeack/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/rgnparser/issues).
 * License: MIT
-* Get citation information for `reeack` in R doing `citation(package = 'reeack')`
-* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Get citation information for `rgnparser` in R doing `citation(package = 'rgnparser')`
+* Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 
 [![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
