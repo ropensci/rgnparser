@@ -9,8 +9,9 @@ rgnparser
 
 gnparser is required to use this package.
 
-Installation instructions can be found at the [gnparser repo](https://gitlab.com/gogna/gnparser). 
+Installation instructions can be found at the [gnparser repo][gnparser]. 
 
+See the [gnparser repo][gnparser] for details on the various features of gnparser
 
 ## Installation
 
@@ -77,8 +78,8 @@ gn_parse_tidy(x)
 #> # A tibble: 3 x 9
 #>   id    verbatim cardinality canonicalfull canonicalsimple canonicalstem
 #>   <chr> <chr>          <dbl> <chr>         <chr>           <chr>        
-#> 1 fbd1… Quadrel…           2 Quadrella st… Quadrella stey… Quadrella st…
-#> 2 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…
+#> 1 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…
+#> 2 fbd1… Quadrel…           2 Quadrella st… Quadrella stey… Quadrella st…
 #> 3 e4e1… Parus m…           2 Parus major   Parus major     Parus maior  
 #> # … with 3 more variables: authorship <chr>, year <dbl>, quality <dbl>
 ```
@@ -93,10 +94,10 @@ spp <- taxize::names_list(rank = "species", size = n)
 timed <- system.time(gn_parse_tidy(spp))
 timed
 #>    user  system elapsed 
-#>   1.020   0.168   0.543
+#>   0.961   0.151   0.456
 ```
 
-Just 0.543 sec for 10000 names
+Just 0.456 sec for 10000 names
 
 ### gn_parse
 
@@ -112,16 +113,16 @@ gn_parse(x)
 #> [1] TRUE
 #> 
 #> [[1]]$quality
-#> [1] 3
-#> 
-#> [[1]]$qualityWarnings
-#>      [,1] [,2]                               
-#> [1,] "3"  "HTML tags or entities in the name"
+#> [1] 1
 #> 
 #> [[1]]$verbatim
-#> [1] "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
+#> [1] "Helianthus annuus var. texanus"
 #> 
 #> [[1]]$normalized
+#> [1] "Helianthus annuus var. texanus"
+#> 
+#> [[1]]$cardinality
+#> [1] 3
 ...
 ```
 
@@ -133,3 +134,5 @@ gn_parse(x)
 * Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 
 [![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
+
+[gnparser]: https://gitlab.com/gogna/gnparser
