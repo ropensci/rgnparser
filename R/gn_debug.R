@@ -4,13 +4,8 @@
 #' 
 #' @export
 #' @param x (character) vector of scientific names
-#' @param format (logical) xxx. default: "compact"
 #' @param threads (integer/numeric) xxx. default: 4
-#' @return list of two data.frames:
-#' 
-#' - meta: metadata
-#' - names: names and their parts, varies based on function parameters
-#' 
+#' @return cats output to screen
 #' @examples
 #' z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")

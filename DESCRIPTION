@@ -13,7 +13,9 @@ Language: en-US
 SystemRequirements: gnparser
 Imports:
     sys,
-    tibble
+    tibble,
+    jsonlite,
+    readr
 Suggests:
     testthat
 RoxygenNote: 7.1.1

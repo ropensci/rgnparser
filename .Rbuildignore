@@ -5,3 +5,5 @@ README.Rmd
 ^notes\.md$
 man-roxygen
 ^cran-comments\.md$
+gnparser*
+.github

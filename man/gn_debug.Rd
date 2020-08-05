@@ -10,15 +10,9 @@ gn_debug(x, threads = 4)
 \item{x}{(character) vector of scientific names}
 
 \item{threads}{(integer/numeric) xxx. default: 4}
-
-\item{format}{(logical) xxx. default: "compact"}
 }
 \value{
-list of two data.frames:
-\itemize{
-\item meta: metadata
-\item names: names and their parts, varies based on function parameters
-}
+cats output to screen
 }
 \description{
 extract names using gnparser
@@ -28,6 +22,5 @@ z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 x <- gn_debug(z[1])
 x
-gn_debug(z[2])
-gn_debug(z[3])
+unclass(x)
 }
