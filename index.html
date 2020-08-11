@@ -70,6 +70,8 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#rgnparser" class="anchor"></a>rgnparser</h1></div>
 
+<p>rgnparser: Parse Scientific Names</p>
+<p>Docs: <a href="https://ropensci.github.io/rgnparser/" class="uri">https://ropensci.github.io/rgnparser/</a></p>
 <div id="install-gnparser" class="section level2">
 <h2 class="hasAnchor">
 <a href="#install-gnparser" class="anchor"></a>Install gnparser</h2>
@@ -140,8 +142,8 @@
 <span class="no">timed</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span>(<span class="fu"><a href="reference/gn_parse_tidy.html">gn_parse_tidy</a></span>(<span class="no">spp</span>))
 <span class="no">timed</span>
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.961   0.151   0.456</span></pre></div>
-<p>Just 0.456 sec for 10000 names</p>
+<span class="co">#&gt;   0.971   0.153   0.454</span></pre></div>
+<p>Just 0.454 sec for 10000 names</p>
 </div>
 <div id="gn_parse" class="section level3">
 <h3 class="hasAnchor">
@@ -155,16 +157,16 @@
 <span class="co">#&gt; [1] TRUE</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[1]]$quality</span>
-<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; [1] 3</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [[1]]$qualityWarnings</span>
+<span class="co">#&gt;      [,1] [,2]                               </span>
+<span class="co">#&gt; [1,] "3"  "HTML tags or entities in the name"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[1]]$verbatim</span>
-<span class="co">#&gt; [1] "Helianthus annuus var. texanus"</span>
+<span class="co">#&gt; [1] "Quadrella steyermarkii (Standl.) Iltis &amp;amp; Cornejo"</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[1]]$normalized</span>
-<span class="co">#&gt; [1] "Helianthus annuus var. texanus"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [[1]]$cardinality</span>
-<span class="co">#&gt; [1] 3</span>
 <span class="no">...</span></pre></div>
 </div>
 </div>
