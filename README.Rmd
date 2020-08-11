@@ -37,6 +37,10 @@ knitr::opts_chunk$set(
 
 [![R-check](https://github.com/ropensci/rgnparser/workflows/R-check/badge.svg)](https://github.com/ropensci/rgnparser/actions/)
 
+rgnparser: Parse Scientific Names
+
+Docs: <https://ropensci.github.io/rgnparser/>
+
 ## Install gnparser
 
 gnparser is required to use this package.

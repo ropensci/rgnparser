@@ -5,7 +5,7 @@ Version: 0.0.1.91
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
-URL: https://docs.ropensci.org/rgnparser/, https://github.com/ropensci/rgnparser
+URL: https://ropensci.github.io/rgnparser/, https://github.com/ropensci/rgnparser
 BugReports: https://github.com/ropensci/rgnparser/issues
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8

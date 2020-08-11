@@ -5,6 +5,10 @@ rgnparser
 
 [![R-check](https://github.com/ropensci/rgnparser/workflows/R-check/badge.svg)](https://github.com/ropensci/rgnparser/actions/)
 
+rgnparser: Parse Scientific Names
+
+Docs: <https://ropensci.github.io/rgnparser/>
+
 ## Install gnparser
 
 gnparser is required to use this package.
@@ -94,10 +98,10 @@ spp <- taxize::names_list(rank = "species", size = n)
 timed <- system.time(gn_parse_tidy(spp))
 timed
 #>    user  system elapsed 
-#>   0.961   0.151   0.456
+#>   0.971   0.153   0.454
 ```
 
-Just 0.456 sec for 10000 names
+Just 0.454 sec for 10000 names
 
 ### gn_parse
 
@@ -113,16 +117,16 @@ gn_parse(x)
 #> [1] TRUE
 #> 
 #> [[1]]$quality
-#> [1] 1
+#> [1] 3
+#> 
+#> [[1]]$qualityWarnings
+#>      [,1] [,2]                               
+#> [1,] "3"  "HTML tags or entities in the name"
 #> 
 #> [[1]]$verbatim
-#> [1] "Helianthus annuus var. texanus"
+#> [1] "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
 #> 
 #> [[1]]$normalized
-#> [1] "Helianthus annuus var. texanus"
-#> 
-#> [[1]]$cardinality
-#> [1] 3
 ...
 ```
 
