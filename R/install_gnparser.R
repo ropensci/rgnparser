@@ -1,0 +1,129 @@
+#' Install gnparser
+#'
+#' Download the appropriate gnparser executable for your platform and
+#' try to copy it to a system directory so \pkg{rgnparser} can run the
+#' \command{gnparser} command.
+#'
+#' This function tries to install gnparser to \code{Sys.getenv('APPDATA')} on
+#' Windows, \file{~/Library/Application Support} on macOS, and \file{~/bin/} on
+#' other platforms (such as Linux). If these directories are not writable, the
+#' package directory \file{gnparser} of \pkg{rgnparser} will be used. If it
+#' still fails, you have to install gnparser by yourself and make sure it can
+#' be found via the environment variable \code{PATH}.
+#'
+#' This is just a helper function and may fail to choose the correct gnparser
+#' executable for your operating system, especially if you are not on Windows
+#' or Mac or a major Linux distribution. When in doubt, read the gnparser
+#' documentation and install it yourself:
+#' https://gitlab.com/gogna/gnparser#installation
+#' @export
+#' @param version The gnparser version number, e.g., \code{0.14.1}; the default
+#' \code{latest} means the latest version (fetched from GitLab releases).
+#' Alternatively, this argument can take a file path of the zip archive or
+#' tarball of gnparser that has already been downloaded from GitLab,
+#' in which case it will not be downloaded again.
+#' @param force Whether to install gnparser even if it has already been installed.
+#' This may be useful when upgrading gnparser.
+install_gnparser = function(version = 'latest', force = FALSE) {
+  if (Sys.which('gnparser') != '' && !force) {
+    message('gnparser is already installed; force=TRUE to reinstall/upgrade')
+    return(invisible())
+  }
+
+  local_file = if (grepl('[.](zip|tar[.]gz)$', version) && file.exists(version))
+    normalizePath(version)
+
+  if (version == 'latest') {
+    json <- jsonlite::fromJSON(
+      'https://gitlab.com/gogna/gnparser/-/releases.json')
+    version <- json$tag[1]
+    pattern <- "/uploads/[A-Za-z0-9]+/gnparser-%s-[a-z0-9-]+\\.(tar.gz|zip)"
+    urls <- strextract(json$description[1], sprintf(pattern, version))[[1]]
+    message('The latest gnparser version is ', version)
+  }
+
+  # FIXME: not modified yet for gnparser
+  if (!is.null(local_file)) {
+    version <- gsub('^gnparser_([0-9.]+)_.*', '\\1', basename(local_file))
+  }
+
+  version <- gsub('^[vV]', '', version)  # pure version number
+  version2 <- as.numeric_version(version)
+  url_base <- 'https://gitlab.com/gogna/gnparser'
+  owd <- setwd(tempdir())
+  on.exit(setwd(owd), add = TRUE)
+  # unlink(sprintf('gnparser_%s*', version), recursive = TRUE)
+
+  download_file = function(os, ext = '.tar.gz') {
+    if (is.null(local_file)) {
+      file <- sprintf('gnparser-v%s-%s%s', version, os, ext)
+      utils::download.file(paste0(url_base, grep(os, urls, value=TRUE)), file,
+        mode = 'wb')
+    } else {
+      file <- local_file
+      ext <- strextract(file, "\\.tar\\.gz|\\.zip")[[1]]
+    }
+    switch(ext, .zip = utils::unzip(file), .tar.gz = {
+      files <- utils::untar(file, list = TRUE)
+      utils::untar(file)
+      files
+    })
+  }
+
+  files = if (is_windows()) {
+    download_file('win')
+  } else if (is_macos()) {
+    download_file("mac", '.tar.gz')
+  } else {
+    download_file('linux', '.tar.gz')
+  }
+
+  exec <- files[grep('gnparser', files)]
+  if (is_windows()) {
+    file.rename(exec, 'gnparser.exe')
+    exec <- 'gnparser.exe'
+  } else {
+    file.rename(exec, 'gnparser')
+    exec <- 'gnparser'
+  }
+
+  install_gnparser_bin(exec)
+}
+
+install_gnparser_bin = function(exec) {
+  success <- FALSE
+  dirs <- bin_paths()
+  for (destdir in dirs) {
+    dir.create(destdir, showWarnings = FALSE)
+    success <- file.copy(exec, destdir, overwrite = TRUE)
+    if (success) break
+  }
+  if (!success) stop(
+    'Unable to install gnparser to any of these dirs: ',
+    paste(dirs, collapse = ', ')
+  )
+  message('gnparser has been installed to ', normalizePath(destdir))
+}
+
+is_windows <- function() .Platform$OS.type == "windows"
+is_macos <- function() unname(Sys.info()["sysname"] == "Darwin")
+is_linux <- function() unname(Sys.info()["sysname"] == "Linux")
+dir_exists <- function(x) utils::file_test("-d", x)
+pkg_file = function(..., mustWork = TRUE) {
+  system.file(..., package = 'blogdown', mustWork = mustWork)
+}
+
+bin_paths = function(dir = 'gnparser') {
+  if (is_windows()) {
+    path = Sys.getenv('APPDATA', '')
+    path = if (dir_exists(path)) file.path(path, dir)
+  } else if (is_macos()) {
+    path = '~/Library/Application Support'
+    path = if (dir_exists(path)) file.path(path, dir)
+    path = c('/usr/local/bin', path)
+  } else {
+    path = c('~/bin', '/snap/bin', '/var/lib/snapd/snap/bin')
+  }
+  path = c(path, pkg_file(dir, mustWork = FALSE))
+  path
+}

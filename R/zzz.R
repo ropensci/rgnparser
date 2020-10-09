@@ -19,7 +19,7 @@ last <- function(x) x[length(x)]
 
 gnparser_exists <- function() {
   check_gnp <- sys::exec_internal("gnparser")
-  if (check_gnp$status != 0) stop("`gnparser` not found, see ?name_extract")
+  if (check_gnp$status != 0) stop("`gnparser` not found, see ?install_gnparser")
   return(TRUE)
 }
 
@@ -37,3 +37,5 @@ readcsv <- function(x) {
   df <- readr::read_csv(x)
   stats::setNames(df, tolower(names(df)))
 }
+
+strextract <- function(str, pattern) regmatches(str, gregexpr(pattern, str))

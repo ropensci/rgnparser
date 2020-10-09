@@ -1,7 +1,7 @@
 Package: rgnparser
 Title: Parse Scientific Names
 Description: Parse scientific names using gnparser (<https://gitlab.com/gogna/gnparser>).
-Version: 0.0.1.91
+Version: 0.0.3.91
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE

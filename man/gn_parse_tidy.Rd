@@ -20,8 +20,5 @@ extract names using gnparser
 \examples{
 x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
-gn_parse_tidy(x[1])
-gn_parse_tidy(x[2])
-gn_parse_tidy(x[3])
 gn_parse_tidy(x)
 }
