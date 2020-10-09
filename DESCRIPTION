@@ -10,7 +10,7 @@ BugReports: https://github.com/ropensci/rgnparser/issues
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Language: en-US
-SystemRequirements: gnparser
+SystemRequirements: gnparser (<https://gitlab.com/gogna/gnparser>)
 Imports:
     sys,
     tibble,
