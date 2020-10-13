@@ -87,6 +87,9 @@ gnparser command." />
   </a>
 </li>
 <li>
+  <a href="../articles/rgnparser.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
@@ -118,7 +121,7 @@ gnparser command." />
     <div class="ref-description">
     <p>Download the appropriate gnparser executable for your platform and
 try to copy it to a system directory so <span class="pkg">rgnparser</span> can run the
-<code class='command'>gnparser</code> command.</p>
+<code>gnparser</code> command.</p>
     </div>
 
     <pre class="usage"><span class='fu'>install_gnparser</span><span class='op'>(</span>version <span class='op'>=</span> <span class='st'>"latest"</span>, force <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -144,9 +147,9 @@ This may be useful when upgrading gnparser.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function tries to install gnparser to <code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv('APPDATA')</a></code> on
-Windows, <code class="file">~/Library/Application Support</code> on macOS, and <code class="file">~/bin/</code> on
+Windows, <code>~/Library/Application Support</code> on macOS, and <code>~/bin/</code> on
 other platforms (such as Linux). If these directories are not writable, the
-package directory <code class="file">gnparser</code> of <span class="pkg">rgnparser</span> will be used. If it
+package directory <code>gnparser</code> of <span class="pkg">rgnparser</span> will be used. If it
 still fails, you have to install gnparser by yourself and make sure it can
 be found via the environment variable <code>PATH</code>.</p>
 <p>This is just a helper function and may fail to choose the correct gnparser
@@ -154,6 +157,9 @@ executable for your operating system, especially if you are not on Windows
 or Mac or a major Linux distribution. When in doubt, read the gnparser
 documentation and install it yourself:
 https://gitlab.com/gogna/gnparser#installation</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>modified from <code>blogdown::install_hugo</code></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
