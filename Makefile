@@ -24,3 +24,7 @@ check: build
 readme:
 	${RSCRIPT} -e "knitr::knit('README.Rmd')"
 
+vign:
+	cd vignettes;\
+	${RSCRIPT} -e "Sys.setenv(NOT_CRAN='true'); knitr::knit('rgnparser.Rmd.og', output = 'rgnparser.Rmd')";\
+	cd ..

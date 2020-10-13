@@ -21,6 +21,8 @@ See the [gnparser repo][gnparser] for details on the various features of gnparse
 
 
 ```r
+install.packages("rgnparser")
+# OR
 remotes::install_github("ropensci/rgnparser")
 ```
 
@@ -29,106 +31,6 @@ remotes::install_github("ropensci/rgnparser")
 library("rgnparser")
 ```
 
-## Examples
-
-### gn_version
-
-gnparser version
-
-
-```r
-gn_version()
-#> $version
-#> [1] "v0.14.1"
-#> 
-#> $build
-#> [1] "2020-05-07_12:35:40UTC"
-```
-
-### gn_debug
-
-debug output
-
-
-```r
-gn_debug("Helianthus annuus var. texanus")
-#> <rgnparser debug>
-#> 
-#> *** Complete Syntax Tree ***
-#> [34mSciName[m "Helianthus annuus var. texanus"
-#>  [34mName[m "Helianthus annuus var. texanus"
-#>   [34mSingleName[m "Helianthus annuus var. texanus"
-#>    [34mNameSpecies[m "Helianthus annuus var. texanus"
-#>     [34mGenusWord[m "Helianthus"
-#>      [34mUninomialWord[m "Helianthus"
-#>       [34mCapWord[m "Helianthus"
-#>        [34mCapWord1[m "Helianthus"
-#>         [34mNameUpperChar[m "H"
-#>          [34mUpperChar[m "H"
-#>           [34mUpperASCII[m "H"
-#>         [34mNameLowerChar[m "e"
-...
-```
-
-### gn_parse_tidy
-
-output a data.frame with more minimal information
-
-
-```r
-x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
-  "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
-gn_parse_tidy(x)
-#> # A tibble: 3 x 9
-#>   id    verbatim cardinality canonicalfull canonicalsimple canonicalstem
-#>   <chr> <chr>          <dbl> <chr>         <chr>           <chr>        
-#> 1 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…
-#> 2 fbd1… Quadrel…           2 Quadrella st… Quadrella stey… Quadrella st…
-#> 3 e4e1… Parus m…           2 Parus major   Parus major     Parus maior  
-#> # … with 3 more variables: authorship <chr>, year <dbl>, quality <dbl>
-```
-
-It's pretty fast, thanks to gnparser of course
-
-
-```r
-n <- 10000L
-# get random scientific names from taxize
-spp <- taxize::names_list(rank = "species", size = n)
-timed <- system.time(gn_parse_tidy(spp))
-timed
-#>    user  system elapsed 
-#>   0.971   0.153   0.454
-```
-
-Just 0.454 sec for 10000 names
-
-### gn_parse
-
-output a list of lists with more detailed information
-
-
-```r
-x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
-  "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
-gn_parse(x)
-#> [[1]]
-#> [[1]]$parsed
-#> [1] TRUE
-#> 
-#> [[1]]$quality
-#> [1] 3
-#> 
-#> [[1]]$qualityWarnings
-#>      [,1] [,2]                               
-#> [1,] "3"  "HTML tags or entities in the name"
-#> 
-#> [[1]]$verbatim
-#> [1] "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
-#> 
-#> [[1]]$normalized
-...
-```
 
 ## Meta
 

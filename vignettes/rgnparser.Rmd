@@ -1,0 +1,398 @@
+---
+title: "rgnparser"
+author: "Scott Chamberlain"
+date: "2020-10-13"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: readable
+vignette: >
+  %\VignetteIndexEntry{Introduction to rgnparser}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+rgnparser: Parse Scientific Names
+
+An R interface to `gnparser` at https://gitlab.com/gogna/gnparser
+
+## Installation
+
+
+```r
+install.packages("rgnparser")
+# OR
+remotes::install_github("ropensci/rgnparser")
+```
+
+
+```r
+library(rgnparser)
+```
+
+## gn_version
+
+gnparser version
+
+
+```r
+gn_version()
+#> $version
+#> [1] "v0.14.1"
+#> 
+#> $build
+#> [1] "2020-05-07_12:35:40UTC"
+```
+
+## gn_debug
+
+debug output
+
+
+```r
+gn_debug("Helianthus annuus var. texanus")
+#> <rgnparser debug>
+#> 
+#> *** Complete Syntax Tree ***
+#> [34mSciName[m "Helianthus annuus var. texanus"
+#>  [34mName[m "Helianthus annuus var. texanus"
+#>   [34mSingleName[m "Helianthus annuus var. texanus"
+#>    [34mNameSpecies[m "Helianthus annuus var. texanus"
+#>     [34mGenusWord[m "Helianthus"
+#>      [34mUninomialWord[m "Helianthus"
+#>       [34mCapWord[m "Helianthus"
+#>        [34mCapWord1[m "Helianthus"
+#>         [34mNameUpperChar[m "H"
+#>          [34mUpperChar[m "H"
+#>           [34mUpperASCII[m "H"
+#>         [34mNameLowerChar[m "e"
+#>          [34mLowerChar[m "e"
+#>           [34mLowerASCII[m "e"
+#>         [34mNameLowerChar[m "l"
+#>          [34mLowerChar[m "l"
+#>           [34mLowerASCII[m "l"
+#>         [34mNameLowerChar[m "i"
+#>          [34mLowerChar[m "i"
+#>           [34mLowerASCII[m "i"
+#>         [34mNameLowerChar[m "a"
+#>          [34mLowerChar[m "a"
+#>           [34mLowerASCII[m "a"
+#>         [34mNameLowerChar[m "n"
+#>          [34mLowerChar[m "n"
+#>           [34mLowerASCII[m "n"
+#>         [34mNameLowerChar[m "t"
+#>          [34mLowerChar[m "t"
+#>           [34mLowerASCII[m "t"
+#>         [34mNameLowerChar[m "h"
+#>          [34mLowerChar[m "h"
+#>           [34mLowerASCII[m "h"
+#>         [34mNameLowerChar[m "u"
+#>          [34mLowerChar[m "u"
+#>           [34mLowerASCII[m "u"
+#>         [34mNameLowerChar[m "s"
+#>          [34mLowerChar[m "s"
+#>           [34mLowerASCII[m "s"
+#>     [34m_[m " "
+#>      [34mSingleSpace[m " "
+#>     [34mSpeciesEpithet[m "annuus"
+#>      [34mWord[m "annuus"
+#>       [34mWord1[m "annuus"
+#>        [34mNameLowerChar[m "a"
+#>         [34mLowerChar[m "a"
+#>          [34mLowerASCII[m "a"
+#>        [34mNameLowerChar[m "n"
+#>         [34mLowerChar[m "n"
+#>          [34mLowerASCII[m "n"
+#>        [34mNameLowerChar[m "n"
+#>         [34mLowerChar[m "n"
+#>          [34mLowerASCII[m "n"
+#>        [34mNameLowerChar[m "u"
+#>         [34mLowerChar[m "u"
+#>          [34mLowerASCII[m "u"
+#>        [34mNameLowerChar[m "u"
+#>         [34mLowerChar[m "u"
+#>          [34mLowerASCII[m "u"
+#>        [34mNameLowerChar[m "s"
+#>         [34mLowerChar[m "s"
+#>          [34mLowerASCII[m "s"
+#>     [34m_[m " "
+#>      [34mSingleSpace[m " "
+#>     [34mInfraspGroup[m "var. texanus"
+#>      [34mInfraspEpithet[m "var. texanus"
+#>       [34mRank[m "var."
+#>        [34mRankVar[m "var."
+#>       [34m_[m " "
+#>        [34mSingleSpace[m " "
+#>       [34mWord[m "texanus"
+#>        [34mWord1[m "texanus"
+#>         [34mNameLowerChar[m "t"
+#>          [34mLowerChar[m "t"
+#>           [34mLowerASCII[m "t"
+#>         [34mNameLowerChar[m "e"
+#>          [34mLowerChar[m "e"
+#>           [34mLowerASCII[m "e"
+#>         [34mNameLowerChar[m "x"
+#>          [34mLowerChar[m "x"
+#>           [34mLowerASCII[m "x"
+#>         [34mNameLowerChar[m "a"
+#>          [34mLowerChar[m "a"
+#>           [34mLowerASCII[m "a"
+#>         [34mNameLowerChar[m "n"
+#>          [34mLowerChar[m "n"
+#>           [34mLowerASCII[m "n"
+#>         [34mNameLowerChar[m "u"
+#>          [34mLowerChar[m "u"
+#>           [34mLowerASCII[m "u"
+#>         [34mNameLowerChar[m "s"
+#>          [34mLowerChar[m "s"
+#>           [34mLowerASCII[m "s"
+#> 
+#> *** Output Syntax Tree ***
+#> [34mSciName[m "Helianthus annuus var. texanus"
+#>  [34mName[m "Helianthus annuus var. texanus"
+#>   [34mSingleName[m "Helianthus annuus var. texanus"
+#>    [34mNameSpecies[m "Helianthus annuus var. texanus"
+#>     [34mGenusWord[m "Helianthus"
+#>      [34mUninomialWord[m "Helianthus"
+#>     [34mSpeciesEpithet[m "annuus"
+#>      [34mWord[m "annuus"
+#>     [34mInfraspGroup[m "var. texanus"
+#>      [34mInfraspEpithet[m "var. texanus"
+#>       [34mRank[m "var."
+#>        [34mRankVar[m "var."
+#>       [34mWord[m "texanus"
+#>  [34mTail[m ""
+```
+
+## gn_parse_tidy
+
+output a data.frame with more minimal information
+
+
+```r
+x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
+  "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
+gn_parse_tidy(x)
+#> # A tibble: 3 x 9
+#>   id    verbatim cardinality canonicalfull canonicalsimple canonicalstem
+#>   <chr> <chr>          <dbl> <chr>         <chr>           <chr>        
+#> 1 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…
+#> 2 fbd1… Quadrel…           2 Quadrella st… Quadrella stey… Quadrella st…
+#> 3 e4e1… Parus m…           2 Parus major   Parus major     Parus maior  
+#> # … with 3 more variables: authorship <chr>, year <dbl>, quality <dbl>
+```
+
+It's pretty fast, thanks to gnparser of course
+
+
+```r
+n <- 10000L
+# get random scientific names from taxize
+spp <- taxize::names_list(rank = "species", size = n)
+timed <- system.time(gn_parse_tidy(spp))
+timed
+#>    user  system elapsed 
+#>   0.989   0.173   0.512
+```
+
+Just 0.512 sec for 10000 names
+
+## gn_parse
+
+output a list of lists with more detailed information
+
+
+```r
+x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
+  "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
+gn_parse(x)
+#> [[1]]
+#> [[1]]$parsed
+#> [1] TRUE
+#> 
+#> [[1]]$quality
+#> [1] 1
+#> 
+#> [[1]]$verbatim
+#> [1] "Helianthus annuus var. texanus"
+#> 
+#> [[1]]$normalized
+#> [1] "Helianthus annuus var. texanus"
+#> 
+#> [[1]]$cardinality
+#> [1] 3
+#> 
+#> [[1]]$canonicalName
+#> [[1]]$canonicalName$full
+#> [1] "Helianthus annuus var. texanus"
+#> 
+#> [[1]]$canonicalName$simple
+#> [1] "Helianthus annuus texanus"
+#> 
+#> [[1]]$canonicalName$stem
+#> [1] "Helianthus annu texan"
+#> 
+#> 
+#> [[1]]$details
+#>        value  value infraspecificEpithets
+#> 1 Helianthus annuus         texanus, var.
+#> 
+#> [[1]]$positions
+#>      [,1]                   [,2] [,3]
+#> [1,] "genus"                "0"  "10"
+#> [2,] "specificEpithet"      "11" "17"
+#> [3,] "rank"                 "18" "22"
+#> [4,] "infraspecificEpithet" "23" "30"
+#> 
+#> [[1]]$surrogate
+#> [1] FALSE
+#> 
+#> [[1]]$virus
+#> [1] FALSE
+#> 
+#> [[1]]$hybrid
+#> [1] FALSE
+#> 
+#> [[1]]$bacteria
+#> [1] FALSE
+#> 
+#> [[1]]$nameStringId
+#> [1] "e571bae4-9e3f-5481-9b53-f614d536066c"
+#> 
+#> [[1]]$parserVersion
+#> [1] "v0.14.1"
+#> 
+#> 
+#> [[2]]
+#> [[2]]$parsed
+#> [1] TRUE
+#> 
+#> [[2]]$quality
+#> [1] 3
+#> 
+#> [[2]]$qualityWarnings
+#>      [,1] [,2]                               
+#> [1,] "3"  "HTML tags or entities in the name"
+#> 
+#> [[2]]$verbatim
+#> [1] "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
+#> 
+#> [[2]]$normalized
+#> [1] "Quadrella steyermarkii (Standl.) Iltis & Cornejo"
+#> 
+#> [[2]]$cardinality
+#> [1] 2
+#> 
+#> [[2]]$canonicalName
+#> [[2]]$canonicalName$full
+#> [1] "Quadrella steyermarkii"
+#> 
+#> [[2]]$canonicalName$simple
+#> [1] "Quadrella steyermarkii"
+#> 
+#> [[2]]$canonicalName$stem
+#> [1] "Quadrella steyermarki"
+#> 
+#> 
+#> [[2]]$authorship
+#> [1] "(Standl.) Iltis & Cornejo"
+#> 
+#> [[2]]$details
+#>       value specificEpithet.value specificEpithet.authorship.value
+#> 1 Quadrella          steyermarkii        (Standl.) Iltis & Cornejo
+#>   specificEpithet.authorship.authors specificEpithet.authorship.authors
+#> 1                            Standl.                     Iltis, Cornejo
+#> 
+#> [[2]]$positions
+#>      [,1]              [,2] [,3]
+#> [1,] "genus"           "0"  "9" 
+#> [2,] "specificEpithet" "10" "22"
+#> [3,] "authorWord"      "24" "31"
+#> [4,] "authorWord"      "33" "38"
+#> [5,] "authorWord"      "41" "48"
+#> 
+#> [[2]]$surrogate
+#> [1] FALSE
+#> 
+#> [[2]]$virus
+#> [1] FALSE
+#> 
+#> [[2]]$hybrid
+#> [1] FALSE
+#> 
+#> [[2]]$bacteria
+#> [1] FALSE
+#> 
+#> [[2]]$nameStringId
+#> [1] "fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e"
+#> 
+#> [[2]]$parserVersion
+#> [1] "v0.14.1"
+#> 
+#> 
+#> [[3]]
+#> [[3]]$parsed
+#> [1] TRUE
+#> 
+#> [[3]]$quality
+#> [1] 1
+#> 
+#> [[3]]$verbatim
+#> [1] "Parus major Linnaeus, 1788"
+#> 
+#> [[3]]$normalized
+#> [1] "Parus major Linnaeus 1788"
+#> 
+#> [[3]]$cardinality
+#> [1] 2
+#> 
+#> [[3]]$canonicalName
+#> [[3]]$canonicalName$full
+#> [1] "Parus major"
+#> 
+#> [[3]]$canonicalName$simple
+#> [1] "Parus major"
+#> 
+#> [[3]]$canonicalName$stem
+#> [1] "Parus maior"
+#> 
+#> 
+#> [[3]]$authorship
+#> [1] "Linnaeus 1788"
+#> 
+#> [[3]]$details
+#>   value specificEpithet.value specificEpithet.authorship.value
+#> 1 Parus                 major                    Linnaeus 1788
+#>   specificEpithet.authorship.basionymAuthorship.authors
+#> 1                                              Linnaeus
+#>   specificEpithet.authorship.basionymAuthorship.value
+#> 1                                                1788
+#> 
+#> [[3]]$positions
+#>      [,1]              [,2] [,3]
+#> [1,] "genus"           "0"  "5" 
+#> [2,] "specificEpithet" "6"  "11"
+#> [3,] "authorWord"      "12" "20"
+#> [4,] "year"            "22" "26"
+#> 
+#> [[3]]$surrogate
+#> [1] FALSE
+#> 
+#> [[3]]$virus
+#> [1] FALSE
+#> 
+#> [[3]]$hybrid
+#> [1] FALSE
+#> 
+#> [[3]]$bacteria
+#> [1] FALSE
+#> 
+#> [[3]]$nameStringId
+#> [1] "e4e1d462-d332-583d-97a1-09735712f04d"
+#> 
+#> [[3]]$parserVersion
+#> [1] "v0.14.1"
+```

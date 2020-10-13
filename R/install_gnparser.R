@@ -2,14 +2,14 @@
 #'
 #' Download the appropriate gnparser executable for your platform and
 #' try to copy it to a system directory so \pkg{rgnparser} can run the
-#' \command{gnparser} command.
+#' `gnparser` command.
 #'
-#' This function tries to install gnparser to \code{Sys.getenv('APPDATA')} on
-#' Windows, \file{~/Library/Application Support} on macOS, and \file{~/bin/} on
+#' This function tries to install gnparser to `Sys.getenv('APPDATA')` on
+#' Windows, `~/Library/Application Support` on macOS, and `~/bin/` on
 #' other platforms (such as Linux). If these directories are not writable, the
-#' package directory \file{gnparser} of \pkg{rgnparser} will be used. If it
+#' package directory `gnparser` of \pkg{rgnparser} will be used. If it
 #' still fails, you have to install gnparser by yourself and make sure it can
-#' be found via the environment variable \code{PATH}.
+#' be found via the environment variable `PATH`.
 #'
 #' This is just a helper function and may fail to choose the correct gnparser
 #' executable for your operating system, especially if you are not on Windows
@@ -17,13 +17,14 @@
 #' documentation and install it yourself:
 #' https://gitlab.com/gogna/gnparser#installation
 #' @export
-#' @param version The gnparser version number, e.g., \code{0.14.1}; the default
-#' \code{latest} means the latest version (fetched from GitLab releases).
+#' @param version The gnparser version number, e.g., `0.14.1`; the default
+#' `latest` means the latest version (fetched from GitLab releases).
 #' Alternatively, this argument can take a file path of the zip archive or
 #' tarball of gnparser that has already been downloaded from GitLab,
 #' in which case it will not be downloaded again.
 #' @param force Whether to install gnparser even if it has already been installed.
 #' This may be useful when upgrading gnparser.
+#' @note modified from `blogdown::install_hugo`
 install_gnparser = function(version = 'latest', force = FALSE) {
   if (Sys.which('gnparser') != '' && !force) {
     message('gnparser is already installed; force=TRUE to reinstall/upgrade')
