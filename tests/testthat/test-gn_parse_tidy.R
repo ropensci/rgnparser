@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("gn_parse_tidy", {
   x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
     "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")

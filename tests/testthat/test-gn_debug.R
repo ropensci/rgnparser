@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("gn_debug", {
   z <- gn_debug("Parus major Linnaeus, 1788")
 
