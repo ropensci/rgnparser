@@ -1,8 +1,11 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "rgnparser",
-  "description": "Parse scientific names using gnparser (<https://gitlab.com/gogna/gnparser>).",
+  "description": "Parse scientific names using gnparser\n    (<https://gitlab.com/gogna/gnparser>), written in Go. gnparser\n    parses scientific names into their component parts; it utilizes\n    a Parsing Expression Grammar specifically for scientific names.",
   "name": "rgnparser: Parse Scientific Names",
   "codeRepository": "https://github.com/ropensci/rgnparser",
   "relatedLink": "https://ropensci.github.io/rgnparser/",
@@ -101,5 +104,10 @@
   "releaseNotes": "https://github.com/ropensci/rgnparser/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgnparser/blob/master/README.md",
   "fileSize": "0KB",
-  "keywords": ["r", "rstats", "taxonomy", "r-package"]
+  "keywords": [
+    "r",
+    "rstats",
+    "taxonomy",
+    "r-package"
+  ]
 }
