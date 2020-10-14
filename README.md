@@ -5,17 +5,9 @@ rgnparser
 
 [![R-check](https://github.com/ropensci/rgnparser/workflows/R-check/badge.svg)](https://github.com/ropensci/rgnparser/actions/)
 
-rgnparser: Parse Scientific Names
+**rgnparser**: Parse Scientific Names
 
 Docs: <https://ropensci.github.io/rgnparser/>
-
-## Install gnparser
-
-gnparser is required to use this package.
-
-Installation instructions can be found at the [gnparser repo][gnparser]. 
-
-See the [gnparser repo][gnparser] for details on the various features of gnparser
 
 ## Installation
 
@@ -30,6 +22,23 @@ remotes::install_github("ropensci/rgnparser")
 ```r
 library("rgnparser")
 ```
+
+## Install gnparser
+
+The command line tool written in Go, gnparser, is required to use this package.
+
+If you want to install gnparser on your own, instructions can be found at the [gnparser repo][gnparser].
+
+There is a helper function in **rgnparser** for downloading and installing gnparser on major
+operating systems (macOS, Windows, Linux):
+
+
+```r
+rgnparser::install_gnparser()
+```
+
+It installs the latest gnparser version by default, but you can specify which 
+version to install. You can also install gnparser outside of R yourself (see above).
 
 
 ## Meta
