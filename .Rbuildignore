@@ -9,3 +9,4 @@ man-roxygen
 ^LICENSE\.md$
 vignettes/rgnparser.Rmd
 ^codemeta\.json$
+notes-egs.R
