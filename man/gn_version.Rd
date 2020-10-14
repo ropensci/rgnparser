@@ -13,5 +13,7 @@ named list, with \code{version} and \code{build}
 get gnparser version information
 }
 \examples{
+\dontrun{
 gn_version()
+}
 }

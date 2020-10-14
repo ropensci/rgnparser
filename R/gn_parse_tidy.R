@@ -7,10 +7,11 @@
 #' @param threads (integer/numeric) number of threads to run. CPU's
 #' threads number is the default. default: 4
 #' @return a data.frame
-#' @examples 
+#' @examples \dontrun{
 #' x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' gn_parse_tidy(x)
+#' }
 gn_parse_tidy <- function(x, threads = 4) {
   gnparser_exists()
 
