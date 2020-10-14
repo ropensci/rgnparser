@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "rgnparser",
-  "description": "Parse scientific names using gnparser\n    (<https://gitlab.com/gogna/gnparser>), written in Go. gnparser\n    parses scientific names into their component parts; it utilizes\n    a Parsing Expression Grammar specifically for scientific names.",
+  "description": "Parse scientific names using 'gnparser'\n    (<https://gitlab.com/gogna/gnparser>), written in Go. 'gnparser'\n    parses scientific names into their component parts; it utilizes\n    a Parsing Expression Grammar specifically for scientific names.",
   "name": "rgnparser: Parse Scientific Names",
   "codeRepository": "https://github.com/ropensci/rgnparser",
   "relatedLink": "https://ropensci.github.io/rgnparser/",
