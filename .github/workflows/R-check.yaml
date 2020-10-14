@@ -50,6 +50,7 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran(c("rcmdcheck"))
+          remotes::install_local()
         shell: Rscript {0}
 
       - name: Install gnparser
