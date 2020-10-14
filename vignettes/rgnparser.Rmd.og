@@ -14,6 +14,30 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
+library("knitr")
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines)==1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(if (abs(lines[1])>1) more else NULL,
+            x[lines],
+            if (length(x)>lines[abs(length(lines))]) more else NULL
+           )
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -48,8 +72,36 @@ gn_version()
 
 debug output
 
-```{r output.lines=1:15}
-gn_debug("Helianthus annuus var. texanus")
+```{r eval=FALSE}
+gn_debug("Poa")
+#> <rgnparser debug>
+#> 
+#> *** Complete Syntax Tree ***
+#> SciName "Poa"
+#>  Name "Poa"
+#>   SingleName "Poa"
+#>    NameUninomial "Poa"
+#>     Uninomial "Poa"
+#>      UninomialWord "Poa"
+#>       CapWord "Poa"
+#>        CapWord1 "Poa"
+#>         NameUpperChar "P"
+#>          UpperChar "P"
+#>           UpperASCII "P"
+#>         NameLowerChar "o"
+#>          LowerChar "o"
+#>           LowerASCII "o"
+#>         NameLowerChar "a"
+#>          LowerChar "a"
+#>           LowerASCII "a"
+#> 
+#> *** Output Syntax Tree ***
+#> SciName "Poa"
+#>  Name "Poa"
+#>   SingleName "Poa"
+#>    Uninomial "Poa"
+#>     UninomialWord "Poa"
+#>  Tail ""
 ```
 
 ## gn_parse_tidy

@@ -4,7 +4,7 @@
 #' 
 #' @export
 #' @param x (character) vector of scientific names
-#' @param threads (integer/numeric) xxx. default: 4
+#' @param threads (integer/numeric) number of threads. default: 4
 #' @return cats output to screen
 #' @examples
 #' z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
