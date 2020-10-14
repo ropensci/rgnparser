@@ -17,12 +17,6 @@ file_type <- function(x) {
 
 last <- function(x) x[length(x)]
 
-gnparser_exists <- function() {
-  check_gnp <- sys::exec_internal("gnparser")
-  if (check_gnp$status != 0) stop("`gnparser` not found, see ?install_gnparser")
-  return(TRUE)
-}
-
 err_chk <- function(z) {
   if (z$status != 0) {
     err <- rawToChar(z$stderr)

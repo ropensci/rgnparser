@@ -86,6 +86,7 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   } else {
     file.rename(exec, 'gnparser')
     exec <- 'gnparser'
+    Sys.chmod(exec, '0755') # chmod +x
   }
 
   install_gnparser_bin(exec)
@@ -111,7 +112,7 @@ is_macos <- function() unname(Sys.info()["sysname"] == "Darwin")
 is_linux <- function() unname(Sys.info()["sysname"] == "Linux")
 dir_exists <- function(x) utils::file_test("-d", x)
 pkg_file = function(..., mustWork = TRUE) {
-  system.file(..., package = 'blogdown', mustWork = mustWork)
+  system.file(..., package = 'rgnparser', mustWork = mustWork)
 }
 
 bin_paths = function(dir = 'gnparser') {

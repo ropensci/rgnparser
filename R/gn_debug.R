@@ -24,7 +24,7 @@ gn_debug <- function(x, threads = 4) {
   args <- c(args, "-f", "debug")
   if (!is.null(threads)) args <- c(args, "-j", threads)
 
-  z <- sys::exec_internal("gnparser", c(args, x), error = FALSE)
+  z <- gnparser_cmd(c(args, x), error = FALSE)
   err_chk(z)
   parsed <- rawToChar(z$stdout)
   return(structure(parsed, class="gnparse_debug"))

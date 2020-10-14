@@ -21,14 +21,5 @@ gn_parse_tidy <- function(x, threads = 4) {
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))
   cat(x, file = file, sep = "\n")
-  readcsv(gn_parse_one(file, threads = threads))
-}
-
-gn_parse_one <- function(x, format = NULL, threads = NULL) {
-  args <- character(0)
-  if (!is.null(format)) args <- c(args, "-f", format)
-  if (!is.null(threads)) args <- c(args, "-j", threads)
-  z <- sys::exec_internal("gnparser", c(args, x), error = FALSE)
-  err_chk(z)
-  return(rawToChar(z$stdout))
+  readcsv(parse_one(file, threads = threads))
 }

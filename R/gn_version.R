@@ -9,7 +9,7 @@
 #' }
 gn_version <- function() {
   gnparser_exists()
-  z <- sys::exec_internal("gnparser", "-v", error = FALSE)
+  z <- gnparser_cmd("-v", error = FALSE)
   err_chk(z)
   txt <- rawToChar(z$stdout)
   txt <- strsplit(txt, "\n")[[1]]

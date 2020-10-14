@@ -28,6 +28,6 @@ gn_parse <- function(x, format = "compact", threads = NULL) {
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))
   cat(x, file = file, sep = "\n")
-  res <- gn_parse_one(file, format, threads)
+  res <- parse_one(file, format, threads)
   lapply(strsplit(res, "\n")[[1]], jsonlite::fromJSON)
 }
