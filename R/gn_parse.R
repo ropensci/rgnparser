@@ -5,8 +5,8 @@
 #' @export
 #' @param x (character) vector of scientific names
 #' @param format (logical) one of "compact" (default) or "pretty"
-#' @param threads (integer/numeric) nubmer of threads to run. CPU's threads number
-#' is the default
+#' @param threads (integer/numeric) number of threads to run. CPU's
+#' threads number is the default. default: 4
 #' @return a list
 #' @examples
 #' x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",

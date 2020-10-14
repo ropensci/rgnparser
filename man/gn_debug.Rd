@@ -9,13 +9,14 @@ gn_debug(x, threads = 4)
 \arguments{
 \item{x}{(character) vector of scientific names}
 
-\item{threads}{(integer/numeric) number of threads. default: 4}
+\item{threads}{(integer/numeric) number of threads to run. CPU's
+threads number is the default. default: 4}
 }
 \value{
 cats output to screen
 }
 \description{
-debug parsing
+debug parsing: get complete syntax tree for names
 }
 \examples{
 z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",

@@ -9,13 +9,14 @@ gn_parse_tidy(x, threads = 4)
 \arguments{
 \item{x}{(character) vector of scientific names}
 
-\item{threads}{(integer/numeric) xxx. default: 4}
+\item{threads}{(integer/numeric) number of threads to run. CPU's
+threads number is the default. default: 4}
 }
 \value{
 a data.frame
 }
 \description{
-extract names using gnparser
+extract names using gnparser into a tidy tibble
 }
 \examples{
 x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",

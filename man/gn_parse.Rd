@@ -11,8 +11,8 @@ gn_parse(x, format = "compact", threads = NULL)
 
 \item{format}{(logical) one of "compact" (default) or "pretty"}
 
-\item{threads}{(integer/numeric) nubmer of threads to run. CPU's threads number
-is the default}
+\item{threads}{(integer/numeric) number of threads to run. CPU's
+threads number is the default. default: 4}
 }
 \value{
 a list

@@ -1,10 +1,11 @@
 #' gn_debug
 #' 
-#' debug parsing
+#' debug parsing: get complete syntax tree for names
 #' 
 #' @export
 #' @param x (character) vector of scientific names
-#' @param threads (integer/numeric) number of threads. default: 4
+#' @param threads (integer/numeric) number of threads to run. CPU's
+#' threads number is the default. default: 4
 #' @return cats output to screen
 #' @examples
 #' z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
