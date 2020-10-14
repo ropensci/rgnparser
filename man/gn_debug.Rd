@@ -9,7 +9,7 @@ gn_debug(x, threads = 4)
 \arguments{
 \item{x}{(character) vector of scientific names}
 
-\item{threads}{(integer/numeric) xxx. default: 4}
+\item{threads}{(integer/numeric) number of threads. default: 4}
 }
 \value{
 cats output to screen
