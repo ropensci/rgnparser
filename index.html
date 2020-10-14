@@ -79,15 +79,8 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#rgnparser" class="anchor"></a>rgnparser</h1></div>
 
-<p>rgnparser: Parse Scientific Names</p>
+<p><strong>rgnparser</strong>: Parse Scientific Names</p>
 <p>Docs: <a href="https://ropensci.github.io/rgnparser/" class="uri">https://ropensci.github.io/rgnparser/</a></p>
-<div id="install-gnparser" class="section level2">
-<h2 class="hasAnchor">
-<a href="#install-gnparser" class="anchor"></a>Install gnparser</h2>
-<p>gnparser is required to use this package.</p>
-<p>Installation instructions can be found at the <a href="https://gitlab.com/gogna/gnparser">gnparser repo</a>.</p>
-<p>See the <a href="https://gitlab.com/gogna/gnparser">gnparser repo</a> for details on the various features of gnparser</p>
-</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -97,6 +90,16 @@
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"ropensci/rgnparser"</span><span class="op">)</span></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://ropensci.github.io/rgnparser/">"rgnparser"</a></span><span class="op">)</span></pre></div>
+</div>
+<div id="install-gnparser" class="section level2">
+<h2 class="hasAnchor">
+<a href="#install-gnparser" class="anchor"></a>Install gnparser</h2>
+<p>The command line tool written in Go, gnparser, is required to use this package.</p>
+<p>If you want to install gnparser on your own, instructions can be found at the <a href="https://gitlab.com/gogna/gnparser">gnparser repo</a>.</p>
+<p>There is a helper function in <strong>rgnparser</strong> for downloading and installing gnparser on major operating systems (macOS, Windows, Linux):</p>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu">rgnparser</span><span class="fu">::</span><span class="fu"><a href="reference/install_gnparser.html">install_gnparser</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<p>It installs the latest gnparser version by default, but you can specify which version to install. You can also install gnparser outside of R yourself (see above).</p>
 </div>
 <div id="meta" class="section level2">
 <h2 class="hasAnchor">
