@@ -15,5 +15,4 @@ test_that("gn_parse", {
   expect_is(w[[1]]$cardinality, "integer")
   expect_is(w[[1]]$canonicalName, "list")
   expect_is(w[[1]]$details, "data.frame")
-  expect_is(w[[1]]$positions, "array")
 })
