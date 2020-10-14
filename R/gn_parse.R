@@ -1,14 +1,15 @@
 #' gn_parse
-#' 
+#'
 #' extract names using gnparser
-#' 
+#'
 #' @export
 #' @param x (character) vector of scientific names
 #' @param format (logical) one of "compact" (default) or "pretty"
 #' @param threads (integer/numeric) number of threads to run. CPU's
 #' threads number is the default. default: 4
 #' @return a list
-#' @examples \dontrun{
+#' @examples
+#' if (interactive()) {
 #' x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' gn_parse(x[1])

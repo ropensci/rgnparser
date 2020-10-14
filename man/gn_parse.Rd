@@ -21,7 +21,7 @@ a list
 extract names using gnparser
 }
 \examples{
-\dontrun{
+if (interactive()) {
 x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 gn_parse(x[1])

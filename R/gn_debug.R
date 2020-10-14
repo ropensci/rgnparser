@@ -1,18 +1,19 @@
 #' gn_debug
-#' 
+#'
 #' debug parsing: get complete syntax tree for names
-#' 
+#'
 #' @export
 #' @param x (character) vector of scientific names
 #' @param threads (integer/numeric) number of threads to run. CPU's
 #' threads number is the default. default: 4
 #' @return cats output to screen
-#' @examples \dontrun{
+#' @examples
 #' z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
-#' x <- gn_debug(z[1])
-#' x
-#' unclass(x)
+#' if (interactive()) {
+#'  x <- gn_debug(z[1])
+#'  x
+#'  unclass(x)
 #' }
 gn_debug <- function(x, threads = 4) {
   gnparser_exists()

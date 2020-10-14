@@ -1,13 +1,14 @@
 #' gn_parse_tidy
-#' 
+#'
 #' extract names using gnparser into a tidy tibble
-#' 
+#'
 #' @export
 #' @param x (character) vector of scientific names
 #' @param threads (integer/numeric) number of threads to run. CPU's
 #' threads number is the default. default: 4
 #' @return a data.frame
-#' @examples \dontrun{
+#' @examples
+#' if (interactive()) {
 #' x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' gn_parse_tidy(x)

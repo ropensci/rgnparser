@@ -19,7 +19,7 @@ a data.frame
 extract names using gnparser into a tidy tibble
 }
 \examples{
-\dontrun{
+if (interactive()) {
 x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 gn_parse_tidy(x)
