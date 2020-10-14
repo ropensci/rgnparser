@@ -49,12 +49,12 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran(c("rcmdcheck"))
-          remotes::install_local()
+          remotes::install_cran(c("rcmdcheck", "curl"))
         shell: Rscript {0}
 
       - name: Install gnparser
         run: |
+          remotes::install_local()
           rgnparser::install_gnparser()
         shell: Rscript {0}
 
