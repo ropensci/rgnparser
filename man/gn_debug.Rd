@@ -19,11 +19,10 @@ cats output to screen
 debug parsing: get complete syntax tree for names
 }
 \examples{
+trys <- function(x) try(x, silent=TRUE)
 z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 if (interactive()) {
- x <- gn_debug(z[1])
- x
- unclass(x)
+trys(gn_debug(z[1]))
 }
 }

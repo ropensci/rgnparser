@@ -13,7 +13,8 @@ named list, with \code{version} and \code{build}
 get gnparser version information
 }
 \examples{
-\dontrun{
-gn_version()
+trys <- function(x) try(x, silent=TRUE)
+if (interactive()) {
+trys(gn_version())
 }
 }

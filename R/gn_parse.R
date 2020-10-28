@@ -9,13 +9,14 @@
 #' threads number is the default. default: 4
 #' @return a list
 #' @examples
+#' trys <- function(x) try(x, silent=TRUE)
 #' if (interactive()) {
 #' x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
-#' gn_parse(x[1])
-#' gn_parse(x[2])
-#' gn_parse(x[3])
-#' gn_parse(x)
+#' trys(gn_parse(x[1]))
+#' trys(gn_parse(x[2]))
+#' trys(gn_parse(x[3]))
+#' trys(gn_parse(x))
 #' }
 gn_parse <- function(x, format = "compact", threads = NULL) {
   gnparser_exists()

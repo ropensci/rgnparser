@@ -8,12 +8,11 @@
 #' threads number is the default. default: 4
 #' @return cats output to screen
 #' @examples
+#' trys <- function(x) try(x, silent=TRUE)
 #' z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' if (interactive()) {
-#'  x <- gn_debug(z[1])
-#'  x
-#'  unclass(x)
+#' trys(gn_debug(z[1]))
 #' }
 gn_debug <- function(x, threads = 4) {
   gnparser_exists()

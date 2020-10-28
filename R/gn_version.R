@@ -4,8 +4,10 @@
 #' 
 #' @export
 #' @return named list, with `version` and `build`
-#' @examples \dontrun{
-#' gn_version()
+#' @examples 
+#' trys <- function(x) try(x, silent=TRUE)
+#' if (interactive()) {
+#' trys(gn_version())
 #' }
 gn_version <- function() {
   gnparser_exists()

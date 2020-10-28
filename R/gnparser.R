@@ -24,13 +24,14 @@ find_exec = function(cmd, dir, info = '') {
   normalizePath(path)
 }
 
+gnpenv <- new.env()
 find_gnparser = local({
-  path = NULL  # cache the path to gnparser
+  gnpenv$path = NULL  # cache the path to gnparser
   function() {
-    if (is.null(path)) path <<- find_exec(
+    if (is.null(gnpenv$path)) gnpenv$path <- find_exec(
       'gnparser', 'gnparser', 'You can install it via rgnparser::install_gnparser()'
     )
-    path
+    gnpenv$path
   }
 })
 

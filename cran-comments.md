@@ -11,7 +11,7 @@
 
 This is a new release. I have read and agree to the the CRAN policies at https://cran.r-project.org/web/packages/policies.html
 
-This is a re-submission of the same version with a fix.
+This is a re-submission of the same version fixing examples and removing use of the <<- operator.
 
 Thanks!
 Scott Chamberlain
