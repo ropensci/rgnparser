@@ -4,7 +4,7 @@ Description: Parse scientific names using 'gnparser'
     (<https://gitlab.com/gogna/gnparser>), written in Go. 'gnparser'
     parses scientific names into their component parts; it utilizes
     a Parsing Expression Grammar specifically for scientific names.
-Version: 0.1.0
+Version: 0.1.0.91
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
 License: MIT + file LICENSE
