@@ -55,7 +55,7 @@ jobs:
 
       - name: Install gnparser
         run: |
-          remotes::install_local()
+          remotes::install_local(force = TRUE)
           cat(rgnparser::get_gnparser_url(), sep = "\n")
           rgnparser::install_gnparser()
         shell: Rscript {0}
