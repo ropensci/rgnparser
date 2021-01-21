@@ -89,6 +89,50 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   install_gnparser_bin(exec)
 }
 
+#' @rdname install_gnparser
+#' @export
+get_gnparser_url = function(version = 'latest', force = FALSE) {
+  if (Sys.which('gnparser') != '' && !force) {
+    message('gnparser is already installed; force=TRUE to reinstall/upgrade')
+    return(invisible())
+  }
+
+  local_file = if (grepl('[.](zip|tar[.]gz)$', version) && file.exists(version))
+    normalizePath(version)
+
+  if (version == 'latest') {
+    json <- jsonlite::fromJSON(
+      'https://api.github.com/repos/gnames/gnparser/releases')
+    version <- json$tag_name[1]
+    urls <- json$assets[[1]]$browser_download_url
+    message('The latest gnparser version is ', version)
+  }
+
+  # FIXME: not modified yet for gnparser
+  if (!is.null(local_file)) {
+    version <- gsub('^gnparser_([0-9.]+)_.*', '\\1', basename(local_file))
+  }
+
+  version <- gsub('^[vV]', '', version)  # pure version number
+  version2 <- as.numeric_version(version)
+  owd <- setwd(tempdir())
+  on.exit(setwd(owd), add = TRUE)
+  # unlink(sprintf('gnparser_%s*', version), recursive = TRUE)
+
+  url_path = function(os, ext = '.tar.gz') {
+    file <- sprintf('gnparser-v%s-%s%s', version, os, ext)
+    grep(os, urls, value = TRUE)
+  }
+
+  if (is_windows()) {
+    url_path('win', '.zip')
+  } else if (is_macos()) {
+    url_path("mac", '.tar.gz')
+  } else {
+    url_path('linux', '.tar.gz')
+  }
+}
+
 install_gnparser_bin = function(exec) {
   success <- FALSE
   dirs <- bin_paths()
