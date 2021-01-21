@@ -13,6 +13,6 @@ test_that("gn_parse", {
   expect_is(w[[1]]$verbatim, "character")
   expect_is(w[[1]]$normalized, "character")
   expect_is(w[[1]]$cardinality, "integer")
-  expect_is(w[[1]]$canonicalName, "list")
-  expect_is(w[[1]]$details, "data.frame")
+  expect_is(w[[1]]$canonical, "list")
+  expect_null(w[[1]]$details) # used to be a thing, removed at some point
 })

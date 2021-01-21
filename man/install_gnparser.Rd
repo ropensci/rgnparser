@@ -33,7 +33,7 @@ This is just a helper function and may fail to choose the correct gnparser
 executable for your operating system, especially if you are not on Windows
 or Mac or a major Linux distribution. When in doubt, read the gnparser
 documentation and install it yourself:
-https://gitlab.com/gogna/gnparser#installation
+https://github.com/gnames/gnparser#installation
 }
 \note{
 modified from \code{blogdown::install_hugo}

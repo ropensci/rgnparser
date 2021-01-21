@@ -46,7 +46,7 @@ knitr::opts_chunk$set(
 
 rgnparser: Parse Scientific Names
 
-An R interface to `gnparser` at https://gitlab.com/gogna/gnparser
+An R interface to `gnparser` at https://github.com/gnames/gnparser
 
 ## Installation
 
@@ -152,4 +152,4 @@ x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
 gn_parse(x)
 ```
 
-[gnparser]: https://gitlab.com/gogna/gnparser
+[gnparser]: https://github.com/gnames/gnparser
