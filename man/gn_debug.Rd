@@ -4,25 +4,11 @@
 \alias{gn_debug}
 \title{gn_debug}
 \usage{
-gn_debug(x, threads = 4)
+gn_debug(...)
 }
 \arguments{
-\item{x}{(character) vector of scientific names}
-
-\item{threads}{(integer/numeric) number of threads to run. CPU's
-threads number is the default. default: 4}
-}
-\value{
-cats output to screen
+\item{...}{ignored}
 }
 \description{
-debug parsing: get complete syntax tree for names
-}
-\examples{
-trys <- function(x) try(x, silent=TRUE)
-z <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
-  "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
-if (interactive()) {
-trys(gn_debug(z[1]))
-}
+DEFUNCT
 }

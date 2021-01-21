@@ -64,42 +64,6 @@ gn_version()
 #> [1] "2021-01-19_14:45:28UTC"
 ```
 
-## gn_debug
-
-debug output
-
-
-```r
-gn_debug("Poa")
-#> <rgnparser debug>
-#> 
-#> *** Complete Syntax Tree ***
-#> SciName "Poa"
-#>  Name "Poa"
-#>   SingleName "Poa"
-#>    NameUninomial "Poa"
-#>     Uninomial "Poa"
-#>      UninomialWord "Poa"
-#>       CapWord "Poa"
-#>        CapWord1 "Poa"
-#>         NameUpperChar "P"
-#>          UpperChar "P"
-#>           UpperASCII "P"
-#>         NameLowerChar "o"
-#>          LowerChar "o"
-#>           LowerASCII "o"
-#>         NameLowerChar "a"
-#>          LowerChar "a"
-#>           LowerASCII "a"
-#> 
-#> *** Output Syntax Tree ***
-#> SciName "Poa"
-#>  Name "Poa"
-#>   SingleName "Poa"
-#>    Uninomial "Poa"
-#>     UninomialWord "Poa"
-#>  Tail ""
-```
 
 ## gn_parse_tidy
 
@@ -129,10 +93,10 @@ spp <- taxize::names_list(rank = "species", size = n)
 timed <- system.time(gn_parse_tidy(spp))
 timed
 #>    user  system elapsed 
-#>   0.943   0.108   0.488
+#>   1.225   0.113   0.555
 ```
 
-Just 0.488 sec for 10000 names
+Just 0.555 sec for 10000 names
 
 ## gn_parse
 

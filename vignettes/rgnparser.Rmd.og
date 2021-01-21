@@ -84,41 +84,6 @@ gnparser version
 gn_version()
 ```
 
-## gn_debug
-
-debug output
-
-```{r eval=FALSE}
-gn_debug("Poa")
-#> <rgnparser debug>
-#> 
-#> *** Complete Syntax Tree ***
-#> SciName "Poa"
-#>  Name "Poa"
-#>   SingleName "Poa"
-#>    NameUninomial "Poa"
-#>     Uninomial "Poa"
-#>      UninomialWord "Poa"
-#>       CapWord "Poa"
-#>        CapWord1 "Poa"
-#>         NameUpperChar "P"
-#>          UpperChar "P"
-#>           UpperASCII "P"
-#>         NameLowerChar "o"
-#>          LowerChar "o"
-#>           LowerASCII "o"
-#>         NameLowerChar "a"
-#>          LowerChar "a"
-#>           LowerASCII "a"
-#> 
-#> *** Output Syntax Tree ***
-#> SciName "Poa"
-#>  Name "Poa"
-#>   SingleName "Poa"
-#>    Uninomial "Poa"
-#>     UninomialWord "Poa"
-#>  Tail ""
-```
 
 ## gn_parse_tidy
 
