@@ -18,8 +18,7 @@ Imports:
     sys,
     tibble,
     jsonlite,
-    readr,
-    crul
+    readr
 Suggests:
     testthat
 RoxygenNote: 7.1.1

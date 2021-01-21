@@ -5,3 +5,4 @@
 ^notes\.md$
 inst/doc
 notes-egs.R
+get_gnparser_url.R

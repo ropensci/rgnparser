@@ -2,12 +2,9 @@
 % Please edit documentation in R/install_gnparser.R
 \name{install_gnparser}
 \alias{install_gnparser}
-\alias{get_gnparser_url}
 \title{Install gnparser}
 \usage{
 install_gnparser(version = "latest", force = FALSE)
-
-get_gnparser_url(version = "latest")
 }
 \arguments{
 \item{version}{The gnparser version number, e.g., \verb{0.14.1}; the default
