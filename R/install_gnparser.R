@@ -93,8 +93,11 @@ install_gnparser = function(version = 'latest', force = FALSE) {
 #' @export
 get_gnparser_url = function(version = 'latest') {
   if (version == 'latest') {
-    json <- jsonlite::fromJSON(
-      'https://api.github.com/repos/gnames/gnparser/releases')
+    # json <- jsonlite::fromJSON(
+    #   'https://api.github.com/repos/gnames/gnparser/releases')
+    res <- crul::HttpClient$new('https://api.github.com/repos/gnames/gnparser/releases')$get()
+    res$raise_for_status()
+    json <- jsonlite::fromJSON(res$parse("UTF-8"))
     version <- json$tag_name[1]
     urls <- json$assets[[1]]$browser_download_url
     message('The latest gnparser version is ', version)
