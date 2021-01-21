@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgnparser</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.91</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3.91</span>
       </span>
     </div>
 
@@ -119,46 +119,11 @@
 <span class="co">#&gt; $build</span>
 <span class="co">#&gt; [1] "2021-01-19_14:45:28UTC"</span></code></pre></div>
 </div>
-<div id="gn_debug" class="section level2">
-<h2 class="hasAnchor">
-<a href="#gn_debug" class="anchor"></a>gn_debug</h2>
-<p>debug output</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/gn_debug.html">gn_debug</a></span><span class="op">(</span><span class="st">"Poa"</span><span class="op">)</span>
-<span class="co">#&gt; &lt;rgnparser debug&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; *** Complete Syntax Tree ***</span>
-<span class="co">#&gt; SciName "Poa"</span>
-<span class="co">#&gt;  Name "Poa"</span>
-<span class="co">#&gt;   SingleName "Poa"</span>
-<span class="co">#&gt;    NameUninomial "Poa"</span>
-<span class="co">#&gt;     Uninomial "Poa"</span>
-<span class="co">#&gt;      UninomialWord "Poa"</span>
-<span class="co">#&gt;       CapWord "Poa"</span>
-<span class="co">#&gt;        CapWord1 "Poa"</span>
-<span class="co">#&gt;         NameUpperChar "P"</span>
-<span class="co">#&gt;          UpperChar "P"</span>
-<span class="co">#&gt;           UpperASCII "P"</span>
-<span class="co">#&gt;         NameLowerChar "o"</span>
-<span class="co">#&gt;          LowerChar "o"</span>
-<span class="co">#&gt;           LowerASCII "o"</span>
-<span class="co">#&gt;         NameLowerChar "a"</span>
-<span class="co">#&gt;          LowerChar "a"</span>
-<span class="co">#&gt;           LowerASCII "a"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; *** Output Syntax Tree ***</span>
-<span class="co">#&gt; SciName "Poa"</span>
-<span class="co">#&gt;  Name "Poa"</span>
-<span class="co">#&gt;   SingleName "Poa"</span>
-<span class="co">#&gt;    Uninomial "Poa"</span>
-<span class="co">#&gt;     UninomialWord "Poa"</span>
-<span class="co">#&gt;  Tail ""</span></code></pre></div>
-</div>
 <div id="gn_parse_tidy" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gn_parse_tidy" class="anchor"></a>gn_parse_tidy</h2>
 <p>output a data.frame with more minimal information</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Quadrella steyermarkii (Standl.) Iltis &amp;amp; Cornejo"</span>,
   <span class="st">"Parus major Linnaeus, 1788"</span>, <span class="st">"Helianthus annuus var. texanus"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/gn_parse_tidy.html">gn_parse_tidy</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -170,21 +135,21 @@
 <span class="co">#&gt; 3 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…</span>
 <span class="co">#&gt; # … with 3 more variables: authorship &lt;chr&gt;, year &lt;dbl&gt;, quality &lt;dbl&gt;</span></code></pre></div>
 <p>It’s pretty fast, thanks to gnparser of course</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000L</span>
 <span class="co"># get random scientific names from taxize</span>
 <span class="va">spp</span> <span class="op">&lt;-</span> <span class="fu">taxize</span><span class="fu">::</span><span class="fu">names_list</span><span class="op">(</span>rank <span class="op">=</span> <span class="st">"species"</span>, size <span class="op">=</span> <span class="va">n</span><span class="op">)</span>
 <span class="va">timed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu"><a href="../reference/gn_parse_tidy.html">gn_parse_tidy</a></span><span class="op">(</span><span class="va">spp</span><span class="op">)</span><span class="op">)</span>
 <span class="va">timed</span>
 <span class="co">#&gt;    user  system elapsed </span>
-<span class="co">#&gt;   0.943   0.108   0.488</span></code></pre></div>
-<p>Just 0.488 sec for 10000 names</p>
+<span class="co">#&gt;   1.225   0.113   0.555</span></code></pre></div>
+<p>Just 0.555 sec for 10000 names</p>
 </div>
 <div id="gn_parse" class="section level2">
 <h2 class="hasAnchor">
 <a href="#gn_parse" class="anchor"></a>gn_parse</h2>
 <p>output a list of lists with more detailed information</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Quadrella steyermarkii (Standl.) Iltis &amp;amp; Cornejo"</span>,
   <span class="st">"Parus major Linnaeus, 1788"</span>, <span class="st">"Helianthus annuus var. texanus"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/gn_parse.html">gn_parse</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
