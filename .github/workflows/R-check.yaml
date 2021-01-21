@@ -58,6 +58,7 @@ jobs:
       
       - name: Install dependencies
         run: |
+          install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran(c("rcmdcheck", "curl"))
         shell: Rscript {0}
