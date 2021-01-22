@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Install gnparser — install_gnparser" />
-<meta property="og:description" content="Download the appropriate gnparser executable for your platform and
-try to copy it to a system directory so rgnparser can run the
+<meta property="og:description" content="Downloads the appropriate gnparser executable for your platform and
+tries to copy it to a system directory so rgnparser can run the
 gnparser command." />
 
 
@@ -74,7 +74,7 @@ gnparser command." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgnparser</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4.91</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.91</span>
       </span>
     </div>
 
@@ -122,8 +122,8 @@ gnparser command." />
     </div>
 
     <div class="ref-description">
-    <p>Download the appropriate gnparser executable for your platform and
-try to copy it to a system directory so <span class="pkg">rgnparser</span> can run the
+    <p>Downloads the appropriate gnparser executable for your platform and
+tries to copy it to a system directory so <span class="pkg">rgnparser</span> can run the
 <code>gnparser</code> command.</p>
     </div>
 
@@ -134,16 +134,18 @@ try to copy it to a system directory so <span class="pkg">rgnparser</span> can r
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>version</th>
-      <td><p>The gnparser version number, e.g., <code>0.14.1</code>; the default
+      <td><p>The gnparser version number, e.g., <code>1.0.0</code>; the default
 <code>latest</code> means the latest version (fetched from GitLab releases).
 Alternatively, this argument can take a file path of the zip archive or
 tarball of gnparser that has already been downloaded from GitLab,
-in which case it will not be downloaded again.</p></td>
+in which case it will not be downloaded again. The minimum version
+is <code>v1.0.0</code> because gnparser v1 introduced breaking changes - and
+we don't support older versions of gnparser here.</p></td>
     </tr>
     <tr>
       <th>force</th>
-      <td><p>Whether to install gnparser even if it has already been installed.
-This may be useful when upgrading gnparser.</p></td>
+      <td><p>Whether to install gnparser even if it has already been
+installed. This may be useful when upgrading gnparser.</p></td>
     </tr>
     </table>
 
