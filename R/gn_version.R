@@ -11,12 +11,15 @@
 #' }
 gn_version <- function() {
   gnparser_exists()
+  # z <- gnparser_cmd("-V", error = FALSE)
   z <- gnparser_cmd("-V", error = FALSE)
+  if (z$status != 0) z <- gnparser_cmd("-v", error = FALSE)
   err_chk(z)
-  txt <- rawToChar(z$stdout)
-  txt <- strsplit(txt, "\n")[[1]]
-  unlist(lapply(txt[nzchar(txt)], function(w) {
-    tmp <- gsub("\\s", "", strsplit(w, ":\\s")[[1]])
-    stats::setNames(list(tmp[2]), tmp[1])
-  }), FALSE)
+  process_version_string(z$stdout)
+  # txt <- rawToChar(z$stdout)
+  # txt <- strsplit(txt, "\n")[[1]]
+  # unlist(lapply(txt[nzchar(txt)], function(w) {
+  #   tmp <- gsub("\\s", "", strsplit(w, ":\\s")[[1]])
+  #   stats::setNames(list(tmp[2]), tmp[1])
+  # }), FALSE)
 }

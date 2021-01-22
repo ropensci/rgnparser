@@ -32,6 +32,7 @@ gn_parse <- function(x, threads = NULL, batch_size = NULL,
   ignore_tags = FALSE, details = FALSE) {
 
   gnparser_exists()
+  ver_check(1)
   assert(x, "character")
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))

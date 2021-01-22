@@ -11,7 +11,7 @@
 #' @examples
 #' trys <- function(x) try(x, silent=TRUE)
 #' if (interactive()) {
-#' x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
+#' x <- c("Quadrella steyermarkii (Standl.) Iltis & Cornejo",
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' trys(gn_parse_tidy(x))
 #' }
@@ -19,6 +19,7 @@ gn_parse_tidy <- function(x, threads = 4, batch_size = NULL,
   ignore_tags = FALSE) {
 
   gnparser_exists()
+  ver_check(1)
   assert(x, "character")
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))

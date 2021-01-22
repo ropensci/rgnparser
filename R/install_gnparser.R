@@ -1,7 +1,7 @@
 #' Install gnparser
 #'
-#' Download the appropriate gnparser executable for your platform and
-#' try to copy it to a system directory so \pkg{rgnparser} can run the
+#' Downloads the appropriate gnparser executable for your platform and
+#' tries to copy it to a system directory so \pkg{rgnparser} can run the
 #' `gnparser` command.
 #'
 #' This function tries to install gnparser to `Sys.getenv('APPDATA')` on
@@ -17,13 +17,15 @@
 #' documentation and install it yourself:
 #' https://github.com/gnames/gnparser#installation
 #' @export
-#' @param version The gnparser version number, e.g., `0.14.1`; the default
+#' @param version The gnparser version number, e.g., `1.0.0`; the default
 #' `latest` means the latest version (fetched from GitLab releases).
 #' Alternatively, this argument can take a file path of the zip archive or
 #' tarball of gnparser that has already been downloaded from GitLab,
-#' in which case it will not be downloaded again.
-#' @param force Whether to install gnparser even if it has already been installed.
-#' This may be useful when upgrading gnparser.
+#' in which case it will not be downloaded again. The minimum version
+#' is `v1.0.0` because gnparser v1 introduced breaking changes - and 
+#' we don't support older versions of gnparser here.
+#' @param force Whether to install gnparser even if it has already been
+#' installed. This may be useful when upgrading gnparser.
 #' @note modified from `blogdown::install_hugo`
 install_gnparser = function(version = 'latest', force = FALSE) {
   if (Sys.which('gnparser') != '' && !force) {

@@ -61,6 +61,25 @@ gnparser_exists <- function() {
   return(TRUE)
 }
 
+process_version_string <- function(x) {
+  txt <- rawToChar(x)
+  txt <- strsplit(txt, "\n")[[1]]
+  unlist(lapply(txt[nzchar(txt)], function(w) {
+    tmp <- gsub("\\s", "", strsplit(w, ":\\s")[[1]])
+    stats::setNames(list(tmp[2]), tmp[1])
+  }), FALSE)
+}
+
+ver_check <- function(version) {
+  # ver <- gnparser_cmd("-V", error = FALSE)
+  # if (ver$status != 0) ver <- gnparser_cmd("-v", error = FALSE)
+  # ver <- process_version_string(ver$stdout)
+  ver <- gn_version()
+  ver_first_num <- as.numeric(substring(gsub("v|\\.", "", ver$version), 1, 1))
+  if (ver_first_num < version) stop("you need `gnparser` v1 or greater, see ?install_gnparser")
+  return(TRUE)
+}
+
 # from xfun::same_path
 same_path <- function(p1, p2, ...) {
   normalize_path(p1, ...) == normalize_path(p2, ...)

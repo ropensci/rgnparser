@@ -32,7 +32,7 @@ details as does \code{\link[=gn_parse]{gn_parse()}}.
 \examples{
 trys <- function(x) try(x, silent=TRUE)
 if (interactive()) {
-x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
+x <- c("Quadrella steyermarkii (Standl.) Iltis & Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 trys(gn_parse_tidy(x))
 }
