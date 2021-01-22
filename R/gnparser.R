@@ -35,10 +35,21 @@ find_gnparser = local({
   }
 })
 
-parse_one <- function(x, format = NULL, threads = NULL) {
+parse_one <- function(x, format = NULL, threads = NULL, 
+  batch_size = NULL, ignore_tags = NULL, details = FALSE) {
+
+  assert(format, "character")
+  assert(threads, c("integer", "numeric"))
+  assert(batch_size, c("integer", "numeric"))
+  assert(ignore_tags, "logical")
+  assert(details, "logical")
+
   args <- character(0)
   if (!is.null(format)) args <- c(args, "-f", format)
   if (!is.null(threads)) args <- c(args, "-j", threads)
+  if (!is.null(batch_size)) args <- c(args, "-b", batch_size)
+  if (!is.null(ignore_tags)) args <- c(args, "-i")
+  if (details) args <- c(args, "-d")
   z <- gnparser_cmd(c(args, x), error = FALSE)
   err_chk(z)
   return(rawToChar(z$stdout))

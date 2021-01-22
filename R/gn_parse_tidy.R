@@ -3,10 +3,11 @@
 #' extract names using gnparser into a tidy tibble
 #'
 #' @export
-#' @param x (character) vector of scientific names
-#' @param threads (integer/numeric) number of threads to run. CPU's
-#' threads number is the default. default: 4
+#' @inheritParams gn_parse
 #' @return a data.frame
+#' @details This function focuses on a data.frame result that's easy
+#' to munge downstream - note that this function does not do additional
+#' details as does [gn_parse()].
 #' @examples
 #' trys <- function(x) try(x, silent=TRUE)
 #' if (interactive()) {
@@ -14,14 +15,14 @@
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' trys(gn_parse_tidy(x))
 #' }
-gn_parse_tidy <- function(x, threads = 4) {
+gn_parse_tidy <- function(x, threads = 4, batch_size = NULL,
+  ignore_tags = FALSE) {
+
   gnparser_exists()
-
   assert(x, "character")
-  assert(threads, c("integer", "numeric"))
-
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))
   cat(x, file = file, sep = "\n")
-  readcsv(parse_one(file, threads = threads))
+  readcsv(parse_one(file, threads = threads, batch_size = batch_size,
+    ignore_tags = ignore_tags))
 }

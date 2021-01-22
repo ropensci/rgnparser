@@ -4,15 +4,27 @@
 \alias{gn_parse}
 \title{gn_parse}
 \usage{
-gn_parse(x, format = "compact", threads = NULL)
+gn_parse(
+  x,
+  threads = NULL,
+  batch_size = NULL,
+  ignore_tags = FALSE,
+  details = FALSE
+)
 }
 \arguments{
-\item{x}{(character) vector of scientific names}
-
-\item{format}{(logical) one of "compact" (default) or "pretty"}
+\item{x}{(character) vector of scientific names. required}
 
 \item{threads}{(integer/numeric) number of threads to run. CPU's
-threads number is the default. default: 4}
+threads number is the default. default: \code{4}}
+
+\item{batch_size}{(integer/numeric) maximum number of names in a
+batch send for processing. default: \code{NULL}}
+
+\item{ignore_tags}{(logical) ignore HTML entities and tags when
+parsing. default: \code{FALSE}}
+
+\item{details}{(logical) Return more details for a parsed name}
 }
 \value{
 a list
@@ -23,11 +35,17 @@ extract names using gnparser
 \examples{
 trys <- function(x) try(x, silent=TRUE)
 if (interactive()) {
-x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
+x <- c("Quadrella steyermarkii (Standl.) Iltis & Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 trys(gn_parse(x[1]))
 trys(gn_parse(x[2]))
 trys(gn_parse(x[3]))
 trys(gn_parse(x))
+# details
+w <- trys(gn_parse(x, details = TRUE))
+w[[1]]$details # details for one name
+lapply(w, "[[", "details") # details for all names
+z <- trys(gn_parse(x, details = FALSE)) # compared to regular
+z
 }
 }
