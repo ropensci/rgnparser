@@ -5,19 +5,19 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "rgnparser",
-  "description": "Parse scientific names using 'gnparser'\n    (<https://gitlab.com/gogna/gnparser>), written in Go. 'gnparser'\n    parses scientific names into their component parts; it utilizes\n    a Parsing Expression Grammar specifically for scientific names.",
+  "description": "Parse scientific names using 'gnparser'\n    (<https://github.com/gnames/gnparser>), written in Go. 'gnparser'\n    parses scientific names into their component parts; it utilizes\n    a Parsing Expression Grammar specifically for scientific names.",
   "name": "rgnparser: Parse Scientific Names",
   "codeRepository": "https://github.com/ropensci/rgnparser",
   "relatedLink": "https://ropensci.github.io/rgnparser/",
   "issueTracker": "https://github.com/ropensci/rgnparser/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "runtimePlatform": "R version 4.0.3 Patched (2021-01-08 r79819)",
   "author": [
     {
       "@type": "Person",
@@ -103,11 +103,18 @@
   ],
   "releaseNotes": "https://github.com/ropensci/rgnparser/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rgnparser/blob/master/README.md",
-  "fileSize": "0KB",
+  "fileSize": "22.428KB",
   "keywords": [
     "r",
     "rstats",
     "taxonomy",
     "r-package"
-  ]
+  ],
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "developmentStatus": "https://www.repostatus.org/#active"
 }

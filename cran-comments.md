@@ -1,7 +1,7 @@
 ## Test environments
 * local R installation, R 4.0.3
-* ubuntu 16.04 (on travis-ci), R 4.0.3
-* win-builder (devel)
+* ubuntu 16.04 (on GitHub Actions), R 4.0.3
+* win-builder (release and devel)
 
 ## R CMD check results
 
@@ -9,9 +9,7 @@
 
 -----
 
-This is a new release. I have read and agree to the the CRAN policies at https://cran.r-project.org/web/packages/policies.html
-
-This is a re-submission of the same version fixing examples and removing use of the <<- operator.
+This submission makes appropriate changes for a new major version of the gnparser Go command line tool.
 
 Thanks!
 Scott Chamberlain
