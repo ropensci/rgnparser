@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rgnparser</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5.91</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -117,13 +117,44 @@
       <small>Source: <a href='https://github.com/ropensci/rgnparser/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="rgnparser-010" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.0">
-<a href="#rgnparser-010" class="anchor"></a>rgnparser 0.1.0<small> 2020-11-05 </small>
+    <div id="rgnparser-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#rgnparser-020" class="anchor"></a>rgnparser 0.2.0<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>NEW FEATURES</h3>
+<ul>
+<li>A new gnparser version (v1) is out. In addition, gnparser has moved from Gitlab to Github; which also required changes to <code><a href="../reference/install_gnparser.html">install_gnparser()</a></code> because we download Go binaries from the gnparser source repository (<a href='https://github.com/ropensci/rgnparser/issues/7'>#7</a>)</li>
+<li>As part of new gnparser version, arguments have changed in <code><a href="../reference/gn_parse.html">gn_parse()</a></code> and <code><a href="../reference/gn_parse_tidy.html">gn_parse_tidy()</a></code>: <code>format</code> has been removed. <code>batch_size</code> and <code>ignore_tags</code> were added to both functions, while <code>details</code> was added to <code><a href="../reference/gn_parse.html">gn_parse()</a></code> only. See docs for details. (<a href='https://github.com/ropensci/rgnparser/issues/11'>#11</a>)</li>
+<li>gnparser v1 or greater is now required (<a href='https://github.com/ropensci/rgnparser/issues/10'>#10</a>)</li>
+</ul>
+</div>
+<div id="defunct" class="section level3">
+<h3 class="hasAnchor">
+<a href="#defunct" class="anchor"></a>DEFUNCT</h3>
+<ul>
+<li>
+<code><a href="../reference/gn_debug.html">gn_debug()</a></code> is now defunct. the gnparser command for this function was removed in gnparser v1 (<a href='https://github.com/ropensci/rgnparser/issues/9'>#9</a>)</li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>BUG FIXES</h3>
+<ul>
+<li>
+<code><a href="../reference/gn_version.html">gn_version()</a></code> was broken with the new gnparser version, fixed now (<a href='https://github.com/ropensci/rgnparser/issues/8'>#8</a>)</li>
+<li>xxx (#xx)</li>
+</ul>
+</div>
+</div>
+    <div id="rgnparser-010" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#rgnparser-010" class="anchor"></a>rgnparser 0.1.0<small> 2020-11-05 </small>
+</h1>
+<div id="new-features-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>First submission to CRAN.</li>
 </ul>
