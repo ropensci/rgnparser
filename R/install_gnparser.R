@@ -22,7 +22,7 @@
 #' Alternatively, this argument can take a file path of the zip archive or
 #' tarball of gnparser that has already been downloaded from GitLab,
 #' in which case it will not be downloaded again. The minimum version
-#' is `v1.0.0` because gnparser v1 introduced breaking changes - and 
+#' is `v1.0.0` because gnparser v1 introduced breaking changes - and
 #' we don't support older versions of gnparser here.
 #' @param force Whether to install gnparser even if it has already been
 #' installed. This may be useful when upgrading gnparser.
@@ -40,7 +40,12 @@ install_gnparser = function(version = 'latest', force = FALSE) {
     json <- jsonlite::fromJSON(
       'https://api.github.com/repos/gnames/gnparser/releases')
     version <- json$tag_name[1]
-    urls <- json$assets[[1]]$browser_download_url
+    if (version == "nightly") {
+      version  <- json$tag_name[2]
+      urls <- json$assets[[2]]$browser_download_url
+    } else {
+      urls <- json$assets[[1]]$browser_download_url
+    }
     message('The latest gnparser version is ', version)
   }
 
