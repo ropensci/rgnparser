@@ -1,40 +1,56 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rgnparser",
-  "description": "Parse scientific names using 'gnparser'\n    (<https://github.com/gnames/gnparser>), written in Go. 'gnparser'\n    parses scientific names into their component parts; it utilizes\n    a Parsing Expression Grammar specifically for scientific names.",
+  "description": "Parse scientific names using 'gnparser' (<https://github.com/gnames/gnparser>), written in Go. 'gnparser' parses scientific names into their component parts; it utilizes a Parsing Expression Grammar specifically for scientific names.",
   "name": "rgnparser: Parse Scientific Names",
-  "codeRepository": "https://github.com/ropensci/rgnparser",
   "relatedLink": "https://ropensci.github.io/rgnparser/",
+  "codeRepository": "https://github.com/ropensci/rgnparser",
   "issueTracker": "https://github.com/ropensci/rgnparser/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.2.0",
+  "version": "0.2.5.92",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 Patched (2021-01-08 r79819)",
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
       "givenName": "Scott",
       "familyName": "Chamberlain",
-      "email": "myrmecocystus@gmail.com"
+      "email": "sckott@protonmail.com",
+      "@id": "https://orcid.org/0000-0003-1444-9135"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Joel H.",
+      "familyName": "Nitta",
+      "email": "joelnitta@gmail.com",
+      "@id": "https://orcid.org/0000-0003-4719-7472"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Alban",
+      "familyName": "Sagouis",
+      "email": "alban.sagouis@idiv.de",
+      "@id": "https://orcid.org/0000-0002-3827-1063"
     }
   ],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Scott",
-      "familyName": "Chamberlain",
-      "email": "myrmecocystus@gmail.com"
+      "givenName": "Joel H.",
+      "familyName": "Nitta",
+      "email": "joelnitta@gmail.com",
+      "@id": "https://orcid.org/0000-0003-4719-7472"
     }
   ],
   "softwareSuggestions": [
@@ -51,8 +67,8 @@
       "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "sys",
       "name": "sys",
@@ -64,7 +80,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sys"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -76,7 +92,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -88,7 +104,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "readr",
       "name": "readr",
@@ -99,22 +115,8 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=readr"
-    }
-  ],
-  "releaseNotes": "https://github.com/ropensci/rgnparser/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/rgnparser/blob/master/README.md",
-  "fileSize": "22.428KB",
-  "keywords": [
-    "r",
-    "rstats",
-    "taxonomy",
-    "r-package"
-  ],
-  "provider": {
-    "@id": "https://cran.r-project.org",
-    "@type": "Organization",
-    "name": "Comprehensive R Archive Network (CRAN)",
-    "url": "https://cran.r-project.org"
+    },
+    "SystemRequirements": "gnparser (<https://github.com/gnames/gnparser>)"
   },
-  "developmentStatus": "https://www.repostatus.org/#active"
+  "fileSize": "11628.266KB"
 }

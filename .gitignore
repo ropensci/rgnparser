@@ -1,8 +1,15 @@
-.DS_Store
 ^.*\.Rproj$
 ^\.Rproj\.user$
+.Rproj.user
+
 .Rhistory
 ^notes\.md$
 inst/doc
 notes-egs.R
 get_gnparser_url.R
+
+revdep/checks.noindex/
+revdep/library.noindex/
+revdep/data.sqlite
+
+.DS_Store

@@ -11,3 +11,4 @@ vignettes/rgnparser.Rmd
 ^codemeta\.json$
 notes-egs.R
 get_gnparser_url.R
+revdep
