@@ -55,7 +55,7 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   }
 
   version <- gsub('^[vV]', '', version)  # pure version number
-  version2 <- as.numeric_version(version)
+  # version <- as.numeric_version(version)
   owd <- setwd(tempdir())
   on.exit(setwd(owd), add = TRUE)
   # unlink(sprintf('gnparser_%s*', version), recursive = TRUE)
@@ -76,7 +76,7 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   }
 
   files = if (is_windows()) {
-     download_file(os = 'win', ext = '.zip')
+     download_file(os = '^(?!.*clib).*win', ext = '.zip')
   } else if (is_macos()) {
      if (is_arm64()) {
         download_file(os = "mac-arm64", ext = '.tar.gz')
