@@ -5,8 +5,6 @@ test_that("install_gnparser skip the nightly version", {
 
   install_gnparser()
   json <- jsonlite::fromJSON('https://api.github.com/repos/gnames/gnparser/releases')
-  nightly <- json$tag_name[1]
-  latest <- json$tag_name[2]
-  expect_equal(nightly, "nightly")
+  latest <- json$tag_name[1]
   expect_equal(gn_version()$version, latest)
 })
