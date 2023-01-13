@@ -18,9 +18,9 @@
 #' https://github.com/gnames/gnparser#installation
 #' @export
 #' @param version The gnparser version number, e.g., `1.0.0`; the default
-#' `latest` means the latest version (fetched from GitLab releases).
+#' `latest` means the latest version (fetched from GitHub releases).
 #' Alternatively, this argument can take a file path of the zip archive or
-#' tarball of gnparser that has already been downloaded from GitLab,
+#' tarball of gnparser that has already been downloaded from GitHub,
 #' in which case it will not be downloaded again. The minimum version
 #' is `v1.0.0` because gnparser v1 introduced breaking changes - and
 #' we don't support older versions of gnparser here.
@@ -48,6 +48,8 @@ install_gnparser = function(version = 'latest', force = FALSE) {
     }
     message('The latest gnparser version is ', version)
   }
+  urls <- grep(pattern = "clib", x = urls, value = TRUE, invert = TRUE)
+
 
   # FIXME: not modified yet for gnparser
   if (!is.null(local_file)) {
@@ -63,7 +65,8 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   download_file = function(os, ext = '.tar.gz') {
     if (is.null(local_file)) {
       file <- sprintf('gnparser-v%s-%s%s', version, os, ext)
-      utils::download.file(grep(os, urls, value = TRUE, perl = TRUE), file, mode = 'wb') # is PERL always available?
+      utils::download.file(url = grep(os, urls, value = TRUE, fixed = TRUE),
+                           destfile = file, mode = 'wb')
     } else {
       file <- local_file
       ext <- strextract(file, "\\.tar\\.gz|\\.zip")[[1]]
@@ -76,12 +79,14 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   }
 
   files = if (is_windows()) {
-     download_file(os = '^(?!.*clib).*win', ext = '.zip')
+     download_file(os = 'win', ext = '.zip')
   } else if (is_macos()) {
      if (is_arm64()) {
         download_file(os = "mac-arm64", ext = '.tar.gz')
      } else {
-        download_file(os = "^(?!.*clib|.*arm64).*mac.*$", ext = '.tar.gz')
+        # remove the arm64 from urls
+        urls <- grep(pattern = "arm64", x = urls, value = TRUE, invert = TRUE)
+        download_file(os = "mac", ext = '.tar.gz')
      }
   } else {
      download_file(os = 'linux', ext = '.tar.gz')
