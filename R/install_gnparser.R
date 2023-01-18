@@ -110,6 +110,16 @@ install_gnparser_bin = function(exec) {
   dirs <- bin_paths()
   for (destdir in dirs) {
     dir.create(destdir, showWarnings = FALSE)
+
+    # Try to copy file, while silencing "Not a directory" warning because of
+    # missing directories
+    withCallingHandlers({
+    success <- file.copy(exec, destdir, overwrite = TRUE)
+    }, warning = function(w) {
+    if (grep("Not a directory", conditionMessage(w), ignore.case = TRUE))
+        invokeRestart("muffleWarning")
+    })
+
     success <- file.copy(exec, destdir, overwrite = TRUE)
     if (success) break
   }
