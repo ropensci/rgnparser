@@ -8,9 +8,9 @@ install_gnparser(version = "latest", force = FALSE)
 }
 \arguments{
 \item{version}{The gnparser version number, e.g., \verb{1.0.0}; the default
-\code{latest} means the latest version (fetched from GitLab releases).
+\code{latest} means the latest version (fetched from GitHub releases).
 Alternatively, this argument can take a file path of the zip archive or
-tarball of gnparser that has already been downloaded from GitLab,
+tarball of gnparser that has already been downloaded from GitHub,
 in which case it will not be downloaded again. The minimum version
 is \code{v1.0.0} because gnparser v1 introduced breaking changes - and
 we don't support older versions of gnparser here.}

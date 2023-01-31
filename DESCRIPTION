@@ -4,7 +4,7 @@ Description: Parse scientific names using 'gnparser'
     (<https://github.com/gnames/gnparser>), written in Go. 'gnparser'
     parses scientific names into their component parts; it utilizes
     a Parsing Expression Grammar specifically for scientific names.
-Version: 0.2.5.93
+Version: 0.2.6
 Authors@R: c(
     person("Scott", "Chamberlain", role = "aut",
       email = "sckott@protonmail.com",

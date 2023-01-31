@@ -1,6 +1,6 @@
 ## Test environments
-* local R installation, R 4.0.3
-* ubuntu 16.04 (on GitHub Actions), R 4.0.3
+* local R installation, R 4.2.0
+* ubuntu 16.04 (on GitHub Actions), R release
 * win-builder (release and devel)
 
 ## R CMD check results
@@ -9,7 +9,10 @@
 
 -----
 
-This submission makes appropriate changes for a new major version of the gnparser Go command line tool.
+This submission fixes a bug in the function 'install_gnparser()'.
+It downloads appropriate binaries for the Go language gnparser software.
+After a change in the GitHub repo, the function version on CRAN could
+not decide which binary to download anymore.
 
 Thanks!
-Scott Chamberlain
+Joel Nitta, Alban Sagouis

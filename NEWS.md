@@ -1,3 +1,8 @@
+rgnparser 0.2.6
+===============
+### BUG FIX
+`install_gnparser()` now downloads the correct binary file depending on the system it installs 'gnparser' on.
+
 rgnparser 0.2.0
 ===============
 
