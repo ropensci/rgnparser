@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ropensci/rgnparser",
   "issueTracker": "https://github.com/ropensci/rgnparser/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.2.5.92",
+  "version": "0.2.6",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -118,5 +118,10 @@
     },
     "SystemRequirements": "gnparser (<https://github.com/gnames/gnparser>)"
   },
-  "fileSize": "11628.266KB"
+  "fileSize": "23.712KB",
+  "releaseNotes": "https://github.com/ropensci/rgnparser/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/rgnparser/blob/main/README.md",
+  "contIntegration": "https://github.com/ropensci/rgnparser/actions/",
+  "developmentStatus": "https://www.repostatus.org/#active",
+  "keywords": ["r", "rstats", "taxonomy", "r-package"]
 }

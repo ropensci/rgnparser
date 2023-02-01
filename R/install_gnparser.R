@@ -18,9 +18,9 @@
 #' https://github.com/gnames/gnparser#installation
 #' @export
 #' @param version The gnparser version number, e.g., `1.0.0`; the default
-#' `latest` means the latest version (fetched from GitLab releases).
+#' `latest` means the latest version (fetched from GitHub releases).
 #' Alternatively, this argument can take a file path of the zip archive or
-#' tarball of gnparser that has already been downloaded from GitLab,
+#' tarball of gnparser that has already been downloaded from GitHub,
 #' in which case it will not be downloaded again. The minimum version
 #' is `v1.0.0` because gnparser v1 introduced breaking changes - and
 #' we don't support older versions of gnparser here.
@@ -48,6 +48,8 @@ install_gnparser = function(version = 'latest', force = FALSE) {
     }
     message('The latest gnparser version is ', version)
   }
+  urls <- grep(pattern = "clib", x = urls, value = TRUE, invert = TRUE)
+
 
   # FIXME: not modified yet for gnparser
   if (!is.null(local_file)) {
@@ -55,7 +57,7 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   }
 
   version <- gsub('^[vV]', '', version)  # pure version number
-  version2 <- as.numeric_version(version)
+  # version <- as.numeric_version(version)
   owd <- setwd(tempdir())
   on.exit(setwd(owd), add = TRUE)
   # unlink(sprintf('gnparser_%s*', version), recursive = TRUE)
@@ -63,7 +65,8 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   download_file = function(os, ext = '.tar.gz') {
     if (is.null(local_file)) {
       file <- sprintf('gnparser-v%s-%s%s', version, os, ext)
-      utils::download.file(grep(os, urls, value = TRUE), file, mode = 'wb')
+      utils::download.file(url = grep(os, urls, value = TRUE, fixed = TRUE),
+                           destfile = file, mode = 'wb')
     } else {
       file <- local_file
       ext <- strextract(file, "\\.tar\\.gz|\\.zip")[[1]]
@@ -76,11 +79,17 @@ install_gnparser = function(version = 'latest', force = FALSE) {
   }
 
   files = if (is_windows()) {
-    download_file('win', '.zip')
+     download_file(os = 'win', ext = '.zip')
   } else if (is_macos()) {
-    download_file("mac", '.tar.gz')
+     if (is_arm64()) {
+        download_file(os = "mac-arm64", ext = '.tar.gz')
+     } else {
+        # remove the arm64 from urls
+        urls <- grep(pattern = "arm64", x = urls, value = TRUE, invert = TRUE)
+        download_file(os = "mac", ext = '.tar.gz')
+     }
   } else {
-    download_file('linux', '.tar.gz')
+     download_file(os = 'linux', ext = '.tar.gz')
   }
 
   exec <- files[grep('gnparser', files)]
@@ -111,9 +120,11 @@ install_gnparser_bin = function(exec) {
   message('gnparser has been installed to ', normalizePath(destdir))
 }
 
+# from xfun
 is_windows <- function() .Platform$OS.type == "windows"
 is_macos <- function() unname(Sys.info()["sysname"] == "Darwin")
 is_linux <- function() unname(Sys.info()["sysname"] == "Linux")
+is_arm64 <- function() Sys.info()[["machine"]] == "arm64"
 dir_exists <- function(x) utils::file_test("-d", x)
 pkg_file = function(..., mustWork = TRUE) {
   system.file(..., package = 'rgnparser', mustWork = mustWork)
@@ -131,5 +142,5 @@ bin_paths = function(dir = 'gnparser') {
     path = c('~/bin', '/snap/bin', '/var/lib/snapd/snap/bin')
   }
   path = c(path, pkg_file(dir, mustWork = FALSE))
-  path
+  return(path)
 }
