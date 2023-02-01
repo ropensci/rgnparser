@@ -12,3 +12,4 @@ vignettes/rgnparser.Rmd
 notes-egs.R
 get_gnparser_url.R
 revdep
+^CRAN-SUBMISSION$
