@@ -15,7 +15,7 @@
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' trys(gn_parse_tidy(x))
 #' }
-gn_parse_tidy <- function(x, threads = 4, batch_size = NULL,
+gn_parse_tidy <- function(x, threads = NULL, batch_size = NULL,
   ignore_tags = FALSE) {
 
   gnparser_exists()

@@ -4,13 +4,14 @@
 \alias{gn_parse_tidy}
 \title{gn_parse_tidy}
 \usage{
-gn_parse_tidy(x, threads = 4, batch_size = NULL, ignore_tags = FALSE)
+gn_parse_tidy(x, threads = NULL, batch_size = NULL, ignore_tags = FALSE)
 }
 \arguments{
 \item{x}{(character) vector of scientific names. required}
 
 \item{threads}{(integer/numeric) number of threads to run. CPU's
-threads number is the default. default: \code{4}}
+threads number is the default as determined by \code{gnparser}.
+default: \code{NULL}}
 
 \item{batch_size}{(integer/numeric) maximum number of names in a
 batch send for processing. default: \code{NULL}}
