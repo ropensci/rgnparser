@@ -31,7 +31,7 @@ parsing. default: \code{FALSE}}
 a list
 }
 \description{
-extract names using gnparser
+extract names using \code{gnparser}
 }
 \examples{
 trys <- function(x) try(x, silent=TRUE)

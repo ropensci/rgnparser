@@ -1,6 +1,6 @@
 #' gn_parse
 #'
-#' extract names using gnparser
+#' extract names using \code{gnparser}
 #'
 #' @export
 #' @param x (character) vector of scientific names. required

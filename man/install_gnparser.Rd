@@ -2,38 +2,38 @@
 % Please edit documentation in R/install_gnparser.R
 \name{install_gnparser}
 \alias{install_gnparser}
-\title{Install gnparser}
+\title{Install \code{gnparser}}
 \usage{
 install_gnparser(version = "latest", force = FALSE)
 }
 \arguments{
-\item{version}{The gnparser version number, e.g., \verb{1.0.0}; the default
+\item{version}{The \code{gnparser} version number, e.g., \verb{1.0.0}; the default
 \code{latest} means the latest version (fetched from GitHub releases).
 Alternatively, this argument can take a file path of the zip archive or
-tarball of gnparser that has already been downloaded from GitHub,
+tarball of \code{gnparser} that has already been downloaded from GitHub,
 in which case it will not be downloaded again. The minimum version
-is \code{v1.0.0} because gnparser v1 introduced breaking changes - and
-we don't support older versions of gnparser here.}
+is \code{v1.0.0} because \code{gnparser} v1 introduced breaking changes - and
+we don't support older versions of \code{gnparser} here.}
 
-\item{force}{Whether to install gnparser even if it has already been
-installed. This may be useful when upgrading gnparser.}
+\item{force}{Whether to install \code{gnparser} even if it has already been
+installed. This may be useful when upgrading \code{gnparser.}}
 }
 \description{
-Downloads the appropriate gnparser executable for your platform and
+Downloads the appropriate \code{gnparser} executable for your platform and
 tries to copy it to a system directory so \pkg{rgnparser} can run the
 \code{gnparser} command.
 }
 \details{
-This function tries to install gnparser to \code{Sys.getenv('APPDATA')} on
+This function tries to install \code{gnparser} to \code{Sys.getenv('APPDATA')} on
 Windows, \verb{~/Library/Application Support} on macOS, and \verb{~/bin/} on
 other platforms (such as Linux). If these directories are not writable, the
 package directory \code{gnparser} of \pkg{rgnparser} will be used. If it
-still fails, you have to install gnparser by yourself and make sure it can
+still fails, you have to install \code{gnparser} by yourself and make sure it can
 be found via the environment variable \code{PATH}.
 
-This is just a helper function and may fail to choose the correct gnparser
+This is just a helper function and may fail to choose the correct \code{gnparser}
 executable for your operating system, especially if you are not on Windows
-or Mac or a major Linux distribution. When in doubt, read the gnparser
+or Mac or a major Linux distribution. When in doubt, read the \code{gnparser}
 documentation and install it yourself:
 https://github.com/gnames/gnparser#installation
 }

@@ -23,7 +23,7 @@ parsing. default: \code{FALSE}}
 a data.frame
 }
 \description{
-extract names using gnparser into a tidy tibble
+extract names using \code{gnparser} into a tidy tibble
 }
 \details{
 This function focuses on a data.frame result that's easy

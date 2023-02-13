@@ -1,31 +1,31 @@
-#' Install gnparser
+#' Install `gnparser`
 #'
-#' Downloads the appropriate gnparser executable for your platform and
+#' Downloads the appropriate `gnparser` executable for your platform and
 #' tries to copy it to a system directory so \pkg{rgnparser} can run the
 #' `gnparser` command.
 #'
-#' This function tries to install gnparser to `Sys.getenv('APPDATA')` on
+#' This function tries to install `gnparser` to `Sys.getenv('APPDATA')` on
 #' Windows, `~/Library/Application Support` on macOS, and `~/bin/` on
 #' other platforms (such as Linux). If these directories are not writable, the
 #' package directory `gnparser` of \pkg{rgnparser} will be used. If it
-#' still fails, you have to install gnparser by yourself and make sure it can
+#' still fails, you have to install `gnparser` by yourself and make sure it can
 #' be found via the environment variable `PATH`.
 #'
-#' This is just a helper function and may fail to choose the correct gnparser
+#' This is just a helper function and may fail to choose the correct `gnparser`
 #' executable for your operating system, especially if you are not on Windows
-#' or Mac or a major Linux distribution. When in doubt, read the gnparser
+#' or Mac or a major Linux distribution. When in doubt, read the `gnparser`
 #' documentation and install it yourself:
 #' https://github.com/gnames/gnparser#installation
 #' @export
-#' @param version The gnparser version number, e.g., `1.0.0`; the default
+#' @param version The `gnparser` version number, e.g., `1.0.0`; the default
 #' `latest` means the latest version (fetched from GitHub releases).
 #' Alternatively, this argument can take a file path of the zip archive or
-#' tarball of gnparser that has already been downloaded from GitHub,
+#' tarball of `gnparser` that has already been downloaded from GitHub,
 #' in which case it will not be downloaded again. The minimum version
-#' is `v1.0.0` because gnparser v1 introduced breaking changes - and
-#' we don't support older versions of gnparser here.
-#' @param force Whether to install gnparser even if it has already been
-#' installed. This may be useful when upgrading gnparser.
+#' is `v1.0.0` because `gnparser` v1 introduced breaking changes - and
+#' we don't support older versions of `gnparser` here.
+#' @param force Whether to install `gnparser` even if it has already been
+#' installed. This may be useful when upgrading `gnparser.`
 #' @note modified from `blogdown::install_hugo`
 install_gnparser = function(version = 'latest', force = FALSE) {
   if (Sys.which('gnparser') != '' && !force) {

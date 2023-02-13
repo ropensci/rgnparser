@@ -1,6 +1,6 @@
 #' gn_parse_tidy
 #'
-#' extract names using gnparser into a tidy tibble
+#' extract names using \code{gnparser} into a tidy tibble
 #'
 #' @export
 #' @inheritParams gn_parse
