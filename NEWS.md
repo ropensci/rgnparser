@@ -1,8 +1,3 @@
-rgnparser 0.X.X
-===============
-### IMPROVEMENT
-`gn_parse_tidy()` now runs on as many threads as found available by `gnparser`.
-
 rgnparser 0.2.6
 ===============
 ### BUG FIX

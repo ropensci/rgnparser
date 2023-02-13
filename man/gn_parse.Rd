@@ -16,8 +16,7 @@ gn_parse(
 \item{x}{(character) vector of scientific names. required}
 
 \item{threads}{(integer/numeric) number of threads to run. CPU's
-threads number is the default as determined by \code{gnparser}.
-default: \code{NULL}}
+threads number is the default. default: \code{4}}
 
 \item{batch_size}{(integer/numeric) maximum number of names in a
 batch send for processing. default: \code{NULL}}

@@ -5,8 +5,7 @@
 #' @export
 #' @param x (character) vector of scientific names. required
 #' @param threads (integer/numeric) number of threads to run. CPU's
-#' threads number is the default as determined by \code{gnparser}.
-#' default: `NULL`
+#' threads number is the default. default: `4`
 #' @param batch_size (integer/numeric) maximum number of names in a
 #' batch send for processing. default: `NULL`
 #' @param ignore_tags (logical) ignore HTML entities and tags when
