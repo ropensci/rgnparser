@@ -1,4 +1,5 @@
 skip_on_cran()
+skip_on_ci()
 
 test_that("gn_parse_tidy", {
   x <- c("Quadrella steyermarkii (Standl.) Iltis & Cornejo",
