@@ -1,23 +1,13 @@
 ---
-title: "rgnparser"
-author: "Scott Chamberlain"
-date: "2021-01-21"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    theme: readable
-vignette: >
-  %\VignetteIndexEntry{Introduction to rgnparser}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+title: "rgnparser: Parse Scientific Names"
+author: "Scott Chamberlain, Joel H. Nitta"
+date: "2023-09-15"
+output: rmarkdown::html_vignette
 ---
 
 
 
-rgnparser: Parse Scientific Names
-
-An R interface to `gnparser` at https://github.com/gnames/gnparser
+An R interface to `gnparser` (https://github.com/gnames/gnparser).
 
 ## Installation
 
@@ -37,50 +27,46 @@ library(rgnparser)
 
 The command line tool written in Go, gnparser, is required to use this package.
 
-If you want to install gnparser on your own, instructions can be found at the [gnparser repo][gnparser].
+Instructions for installation can be found at the gnparser repo
+(<https://github.com/gnames/gnparser#installation>).
 
-There is a helper function in **rgnparser** for downloading and installing gnparser on major
-operating systems (macOS, Windows, Linux):
+## gn_version()
 
-
-```r
-rgnparser::install_gnparser()
-```
-
-It installs the latest gnparser version by default, but you can specify which 
-version to install. You can also install gnparser outside of R yourself (see above).
-
-## gn_version
-
-gnparser version
+Check the gnparser version:
 
 
 ```r
 gn_version()
 #> $version
-#> [1] "v1.0.0"
+#> [1] "v1.7.1"
 #> 
 #> $build
-#> [1] "2021-01-19_14:45:28UTC"
+#> [1] ""
 ```
-
 
 ## gn_parse_tidy
 
-output a data.frame with more minimal information
+Output a data.frame with more minimal information
 
 
 ```r
 x <- c("Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo",
   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 gn_parse_tidy(x)
-#> # A tibble: 3 x 9
-#>   id    verbatim cardinality canonicalstem canonicalsimple canonicalfull
-#>   <chr> <chr>          <dbl> <chr>         <chr>           <chr>        
-#> 1 3e33… Quadrel…           2 Quadrella st… Quadrella stey… Quadrella st…
-#> 2 e4e1… Parus m…           2 Parus maior   Parus major     Parus major  
-#> 3 e571… Heliant…           3 Helianthus a… Helianthus ann… Helianthus a…
-#> # … with 3 more variables: authorship <chr>, year <dbl>, quality <dbl>
+#> Rows: 3 Columns: 9
+#> ── Column specification ────────────────────────────────────────
+#> Delimiter: ","
+#> chr (6): Id, Verbatim, CanonicalStem, CanonicalSimple, CanonicalFull, Authorship
+#> dbl (3): Cardinality, Year, Quality
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+#> # A tibble: 3 × 9
+#>   id                                   verbatim             cardinality canonicalstem canonicalsimple canonicalfull authorship  year quality
+#>   <chr>                                <chr>                      <dbl> <chr>         <chr>           <chr>         <chr>      <dbl>   <dbl>
+#> 1 fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e Quadrella steyermar…           2 Quadrella st… Quadrella stey… Quadrella st… (Standl.)…    NA       4
+#> 2 e4e1d462-d332-583d-97a1-09735712f04d Parus major Linnaeu…           2 Parus maior   Parus major     Parus major   Linnaeus …  1788       1
+#> 3 e571bae4-9e3f-5481-9b53-f614d536066c Helianthus annuus v…           3 Helianthus a… Helianthus ann… Helianthus a… <NA>          NA       1
 ```
 
 It's pretty fast, thanks to gnparser of course
@@ -91,12 +77,21 @@ n <- 10000L
 # get random scientific names from taxize
 spp <- taxize::names_list(rank = "species", size = n)
 timed <- system.time(gn_parse_tidy(spp))
+#> Rows: 10000 Columns: 9
+#> ── Column specification ────────────────────────────────────────
+#> Delimiter: ","
+#> chr (5): Id, Verbatim, CanonicalStem, CanonicalSimple, CanonicalFull
+#> dbl (2): Cardinality, Quality
+#> lgl (2): Authorship, Year
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 timed
 #>    user  system elapsed 
-#>   1.225   0.113   0.555
+#>   0.458   0.091   0.244
 ```
 
-Just 0.555 sec for 10000 names
+Just 0.244 sec for 10000 names
 
 ## gn_parse
 
@@ -112,17 +107,135 @@ gn_parse(x)
 #> [1] TRUE
 #> 
 #> [[1]]$quality
-#> [1] 3
+#> [1] 4
 #> 
 #> [[1]]$qualityWarnings
-#>   quality                           warning
-#> 1       3 HTML tags or entities in the name
+#>   quality       warning
+#> 1       4 Unparsed tail
 #> 
 #> [[1]]$verbatim
-#> [1] "Quadrella steyermarkii (Standl.) Iltis & Cornejo"
+#> [1] "Quadrella steyermarkii (Standl.) Iltis &amp; Cornejo"
 #> 
 #> [[1]]$normalized
-...
+#> [1] "Quadrella steyermarkii (Standl.) Iltis"
+#> 
+#> [[1]]$canonical
+#> [[1]]$canonical$stemmed
+#> [1] "Quadrella steyermark"
+#> 
+#> [[1]]$canonical$simple
+#> [1] "Quadrella steyermarkii"
+#> 
+#> [[1]]$canonical$full
+#> [1] "Quadrella steyermarkii"
+#> 
+#> 
+#> [[1]]$cardinality
+#> [1] 2
+#> 
+#> [[1]]$authorship
+#> [[1]]$authorship$verbatim
+#> [1] "(Standl.) Iltis"
+#> 
+#> [[1]]$authorship$normalized
+#> [1] "(Standl.) Iltis"
+#> 
+#> [[1]]$authorship$authors
+#> [1] "Standl." "Iltis"  
+#> 
+#> 
+#> [[1]]$tail
+#> [1] " &amp; Cornejo"
+#> 
+#> [[1]]$id
+#> [1] "fbd1b4fe-f8ed-5390-9cb1-e0f798691b1e"
+#> 
+#> [[1]]$parserVersion
+#> [1] "v1.7.1"
+#> 
+#> 
+#> [[2]]
+#> [[2]]$parsed
+#> [1] TRUE
+#> 
+#> [[2]]$quality
+#> [1] 1
+#> 
+#> [[2]]$verbatim
+#> [1] "Parus major Linnaeus, 1788"
+#> 
+#> [[2]]$normalized
+#> [1] "Parus major Linnaeus 1788"
+#> 
+#> [[2]]$canonical
+#> [[2]]$canonical$stemmed
+#> [1] "Parus maior"
+#> 
+#> [[2]]$canonical$simple
+#> [1] "Parus major"
+#> 
+#> [[2]]$canonical$full
+#> [1] "Parus major"
+#> 
+#> 
+#> [[2]]$cardinality
+#> [1] 2
+#> 
+#> [[2]]$authorship
+#> [[2]]$authorship$verbatim
+#> [1] "Linnaeus, 1788"
+#> 
+#> [[2]]$authorship$normalized
+#> [1] "Linnaeus 1788"
+#> 
+#> [[2]]$authorship$year
+#> [1] "1788"
+#> 
+#> [[2]]$authorship$authors
+#> [1] "Linnaeus"
+#> 
+#> 
+#> [[2]]$id
+#> [1] "e4e1d462-d332-583d-97a1-09735712f04d"
+#> 
+#> [[2]]$parserVersion
+#> [1] "v1.7.1"
+#> 
+#> 
+#> [[3]]
+#> [[3]]$parsed
+#> [1] TRUE
+#> 
+#> [[3]]$quality
+#> [1] 1
+#> 
+#> [[3]]$verbatim
+#> [1] "Helianthus annuus var. texanus"
+#> 
+#> [[3]]$normalized
+#> [1] "Helianthus annuus var. texanus"
+#> 
+#> [[3]]$canonical
+#> [[3]]$canonical$stemmed
+#> [1] "Helianthus annu texan"
+#> 
+#> [[3]]$canonical$simple
+#> [1] "Helianthus annuus texanus"
+#> 
+#> [[3]]$canonical$full
+#> [1] "Helianthus annuus var. texanus"
+#> 
+#> 
+#> [[3]]$cardinality
+#> [1] 3
+#> 
+#> [[3]]$id
+#> [1] "e571bae4-9e3f-5481-9b53-f614d536066c"
+#> 
+#> [[3]]$parserVersion
+#> [1] "v1.7.1"
 ```
 
 [gnparser]: https://github.com/gnames/gnparser
+
+
