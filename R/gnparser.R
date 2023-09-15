@@ -29,7 +29,7 @@ find_gnparser = local({
   gnpenv$path = NULL  # cache the path to gnparser
   function() {
     if (is.null(gnpenv$path)) gnpenv$path <- find_exec(
-      'gnparser', 'gnparser', 'You can install it via rgnparser::install_gnparser()'
+      'gnparser', 'gnparser', 'You need to install gnparser'
     )
     gnpenv$path
   }
@@ -57,7 +57,7 @@ parse_one <- function(x, format = NULL, threads = NULL,
 
 gnparser_exists <- function() {
   check_gnp <- gnparser_cmd()
-  if (check_gnp$status != 0) stop("`gnparser` not found, see ?install_gnparser")
+  if (check_gnp$status != 0) stop("You need to install gnparser")
   return(TRUE)
 }
 
@@ -76,7 +76,7 @@ ver_check <- function(version) {
   # ver <- process_version_string(ver$stdout)
   ver <- gn_version()
   ver_first_num <- as.numeric(substring(gsub("v|\\.", "", ver$version), 1, 1))
-  if (ver_first_num < version) stop("you need `gnparser` v1 or greater, see ?install_gnparser")
+  if (ver_first_num < version) stop("you need to install `gnparser` v1 or greater")
   return(TRUE)
 }
 

@@ -31,4 +31,3 @@ Imports:
 Suggests:
     testthat
 RoxygenNote: 7.2.3
-Config/testthat/start-first: install_gnparser

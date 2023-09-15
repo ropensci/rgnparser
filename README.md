@@ -33,19 +33,8 @@ library("rgnparser")
 The command line tool written in Go, gnparser, is required to use this
 package.
 
-If you want to install gnparser on your own, instructions can be found
-at the gnparser repo (<https://github.com/gnames/gnparser>)
-
-There is a helper function in **rgnparser** for downloading and
-installing gnparser on major operating systems (macOS, Windows, Linux):
-
-``` r
-rgnparser::install_gnparser()
-```
-
-It installs the latest gnparser version by default, but you can specify
-which version to install. You can also install gnparser outside of R
-yourself (see above).
+Instructions for installation can be found at the gnparser repo
+(<https://github.com/gnames/gnparser#installation>)
 
 ## Meta
 
