@@ -4,7 +4,7 @@
   "identifier": "rgnparser",
   "description": "Parse scientific names using 'gnparser' (<https://github.com/gnames/gnparser>), written in Go. 'gnparser' parses scientific names into their component parts; it utilizes a Parsing Expression Grammar specifically for scientific names.",
   "name": "rgnparser: Parse Scientific Names",
-  "relatedLink": "https://ropensci.github.io/rgnparser/",
+  "relatedLink": "https://docs.ropensci.org/rgnparser/",
   "codeRepository": "https://github.com/ropensci/rgnparser",
   "issueTracker": "https://github.com/ropensci/rgnparser/issues",
   "license": "https://spdx.org/licenses/MIT",

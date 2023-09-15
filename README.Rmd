@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 **rgnparser**: Parse Scientific Names
 
-Docs: https://ropensci.github.io/rgnparser/
+Docs: https://docs.ropensci.org/rgnparser/
 
 ## Installation
 

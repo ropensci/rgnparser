@@ -17,7 +17,7 @@ Authors@R: c(
       comment = c(ORCID = "0000-0002-3827-1063"))
     )
 License: MIT + file LICENSE
-URL: https://ropensci.github.io/rgnparser/, https://github.com/ropensci/rgnparser
+URL: https://docs.ropensci.org/rgnparser/, https://github.com/ropensci/rgnparser
 BugReports: https://github.com/ropensci/rgnparser/issues
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8

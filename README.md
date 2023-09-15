@@ -14,7 +14,7 @@ version](https://www.r-pkg.org/badges/version/rgnparser)](https://cran.r-project
 
 **rgnparser**: Parse Scientific Names
 
-Docs: <https://ropensci.github.io/rgnparser/>
+Docs: <https://docs.ropensci.org/rgnparser/>
 
 ## Installation
 
