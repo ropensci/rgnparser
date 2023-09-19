@@ -40,7 +40,7 @@ parse_one <- function(x, format = NULL, threads = NULL,
   capitalize = FALSE, diaereses = FALSE, details = FALSE) {
 
   assert(format, "character")
-  assert(threads, c("integer", "numeric"))
+  assert(threads, c("integer", "numeric")) # NULL OK
   assert(batch_size, c("integer", "numeric"))
   assert(ignore_tags, "logical")
   assert(cultivar, "logical")

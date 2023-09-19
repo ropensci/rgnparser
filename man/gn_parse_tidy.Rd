@@ -6,7 +6,7 @@
 \usage{
 gn_parse_tidy(
   x,
-  threads = 4,
+  threads = 1,
   batch_size = NULL,
   cultivar = FALSE,
   capitalize = FALSE,
@@ -17,8 +17,8 @@ gn_parse_tidy(
 \arguments{
 \item{x}{(character) vector of scientific names. required}
 
-\item{threads}{(integer/numeric) number of threads to run. CPU's
-threads number is the default. default: \code{4}}
+\item{threads}{(integer/numeric) number of threads to run for parallel
+processing. Setting to \code{NULL} will use all threads available. default: \code{1}}
 
 \item{batch_size}{(integer/numeric) maximum number of names in a
 batch send for processing. default: \code{NULL}}
