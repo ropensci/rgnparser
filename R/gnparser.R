@@ -48,7 +48,7 @@ parse_one <- function(x, format = NULL, threads = NULL,
   if (!is.null(format)) args <- c(args, "-f", format)
   if (!is.null(threads)) args <- c(args, "-j", threads)
   if (!is.null(batch_size)) args <- c(args, "-b", batch_size)
-  if (!is.null(ignore_tags)) args <- c(args, "-i")
+  if (ignore_tags) args <- c(args, "-i")
   if (details) args <- c(args, "-d")
   z <- gnparser_cmd(c(args, x), error = FALSE)
   err_chk(z)
