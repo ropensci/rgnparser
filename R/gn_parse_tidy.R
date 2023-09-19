@@ -15,7 +15,13 @@
 #'   "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
 #' trys(gn_parse_tidy(x))
 #' }
-gn_parse_tidy <- function(x, threads = 4, batch_size = NULL,
+gn_parse_tidy <- function(
+  x,
+  threads = 4,
+  batch_size = NULL,
+  cultivar = FALSE,
+  capitalize = FALSE,
+  diaereses = FALSE,
   ignore_tags = FALSE) {
 
   gnparser_exists()
@@ -24,6 +30,15 @@ gn_parse_tidy <- function(x, threads = 4, batch_size = NULL,
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))
   cat(x, file = file, sep = "\n")
-  readcsv(parse_one(file, threads = threads, batch_size = batch_size,
-    ignore_tags = ignore_tags))
+  readcsv(
+    parse_one(
+      file,
+      threads = threads,
+      batch_size = batch_size,
+      cultivar = cultivar,
+      capitalize = capitalize,
+      diaereses = diaereses,
+      ignore_tags = ignore_tags
+    )
+  )
 }
