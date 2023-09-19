@@ -4,8 +4,8 @@
 #'
 #' @export
 #' @param x (character) vector of scientific names. required
-#' @param threads (integer/numeric) number of threads to run. CPU's
-#' threads number is the default. default: `4`
+#' @param threads (integer/numeric) number of threads to run for parallel
+#'   processing. Setting to `NULL` will use all threads available. default: `1`
 #' @param batch_size (integer/numeric) maximum number of names in a
 #' batch send for processing. default: `NULL`
 #' @param cultivar (logical) adds support for botanical cultivars like
@@ -38,7 +38,7 @@
 #' }
 gn_parse <- function(
   x,
-  threads = NULL,
+  threads = 1,
   batch_size = NULL,
   ignore_tags = FALSE,
   cultivar = FALSE,

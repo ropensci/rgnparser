@@ -17,7 +17,7 @@
 #' }
 gn_parse_tidy <- function(
   x,
-  threads = 4,
+  threads = 1,
   batch_size = NULL,
   cultivar = FALSE,
   capitalize = FALSE,
