@@ -9,6 +9,9 @@ gn_parse(
   threads = NULL,
   batch_size = NULL,
   ignore_tags = FALSE,
+  cultivar = FALSE,
+  capitalize = FALSE,
+  diaereses = FALSE,
   details = FALSE
 )
 }
@@ -23,6 +26,17 @@ batch send for processing. default: \code{NULL}}
 
 \item{ignore_tags}{(logical) ignore HTML entities and tags when
 parsing. default: \code{FALSE}}
+
+\item{cultivar}{(logical) adds support for botanical cultivars like
+\verb{Sarracenia flava 'Maxima'} and graft-chimaeras like \code{+ Crataegomespilus}.
+default: \code{FALSE}}
+
+\item{capitalize}{(logical) capitalizes the first letter of name-strings.
+default: \code{FALSE}}
+
+\item{diaereses}{(logical) preserves diaereses within names, e.g.
+\verb{Leptochloöpsis virgata}. The stemmed canonical name will be generated
+without diaereses. default: \code{FALSE}}
 
 \item{details}{(logical) Return more details for a parsed name}
 }

@@ -4,7 +4,15 @@
 \alias{gn_parse_tidy}
 \title{gn_parse_tidy}
 \usage{
-gn_parse_tidy(x, threads = 4, batch_size = NULL, ignore_tags = FALSE)
+gn_parse_tidy(
+  x,
+  threads = 4,
+  batch_size = NULL,
+  cultivar = FALSE,
+  capitalize = FALSE,
+  diaereses = FALSE,
+  ignore_tags = FALSE
+)
 }
 \arguments{
 \item{x}{(character) vector of scientific names. required}
@@ -14,6 +22,17 @@ threads number is the default. default: \code{4}}
 
 \item{batch_size}{(integer/numeric) maximum number of names in a
 batch send for processing. default: \code{NULL}}
+
+\item{cultivar}{(logical) adds support for botanical cultivars like
+\verb{Sarracenia flava 'Maxima'} and graft-chimaeras like \code{+ Crataegomespilus}.
+default: \code{FALSE}}
+
+\item{capitalize}{(logical) capitalizes the first letter of name-strings.
+default: \code{FALSE}}
+
+\item{diaereses}{(logical) preserves diaereses within names, e.g.
+\verb{Leptochloöpsis virgata}. The stemmed canonical name will be generated
+without diaereses. default: \code{FALSE}}
 
 \item{ignore_tags}{(logical) ignore HTML entities and tags when
 parsing. default: \code{FALSE}}

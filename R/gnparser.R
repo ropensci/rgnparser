@@ -36,12 +36,16 @@ find_gnparser = local({
 })
 
 parse_one <- function(x, format = NULL, threads = NULL, 
-  batch_size = NULL, ignore_tags = NULL, details = FALSE) {
+  batch_size = NULL, ignore_tags = NULL, cultivar = FALSE,
+  capitalize = FALSE, diaereses = FALSE, details = FALSE) {
 
   assert(format, "character")
   assert(threads, c("integer", "numeric"))
   assert(batch_size, c("integer", "numeric"))
   assert(ignore_tags, "logical")
+  assert(cultivar, "logical")
+  assert(capitalize, "logical")
+  assert(diaereses, "logical")
   assert(details, "logical")
 
   args <- character(0)
@@ -49,6 +53,9 @@ parse_one <- function(x, format = NULL, threads = NULL,
   if (!is.null(threads)) args <- c(args, "--jobs", threads)
   if (!is.null(batch_size)) args <- c(args, "--batch_size", batch_size)
   if (ignore_tags) args <- c(args, "--ignore_tags")
+  if (cultivar) args <- c(args, "--cultivar")
+  if (capitalize) args <- c(args, "--capitalize")
+  if (diaereses) args <- c(args, "--diaereses")
   if (details) args <- c(args, "--details")
   z <- gnparser_cmd(c(args, x), error = FALSE)
   err_chk(z)
