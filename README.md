@@ -4,9 +4,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![cran
-checks](https://cranchecks.info/badges/worst/rgnparser)](https://cranchecks.info/pkgs/rgnparser)
-[![R-check](https://github.com/ropensci/rgnparser/workflows/R-check/badge.svg)](https://github.com/ropensci/rgnparser/actions/)
+[![R-check](https://github.com/ropensci/rgnparser/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/rgnparser/actions/)
 [![rstudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/rgnparser)](https://github.com/r-hub/cranlogs.app)
 [![cran
