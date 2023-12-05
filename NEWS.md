@@ -13,7 +13,7 @@ rgnparser 0.3.0
 
 ### DEFUNCT
 
-* `install_gnparser()` has been removed to stay in compliance with CRAN policies ("Packages should not write in the user’s home filespace, nor anywhere else on the file system apart from the R session’s temporary directory")
+* `install_gnparser()` has been deprecated to stay in compliance with CRAN policies ("Packages should not write in the user’s home filespace, nor anywhere else on the file system apart from the R session’s temporary directory")
 
 ### BUG FIX
 

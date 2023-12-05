@@ -27,7 +27,8 @@ Imports:
     sys,
     tibble,
     jsonlite,
-    readr
+    readr,
+    lifecycle
 Suggests:
     testthat
 RoxygenNote: 7.2.3

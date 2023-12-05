@@ -1,4 +1,3 @@
-cl <- function(l) Filter(Negate(is.null), l)
 
 assert <- function(x, y) {
   if (!is.null(x)) {
@@ -7,12 +6,6 @@ assert <- function(x, y) {
         paste0(y, collapse = ", "), call. = FALSE)
     }
   }
-}
-
-file_type <- function(x) {
-  if (grepl("\\.pdf$", x)) return("pdf")
-  if (grepl("\\.xml$", x)) return("xml")
-  return(last(strsplit(x, "\\.")[[1]]))
 }
 
 last <- function(x) x[length(x)]
@@ -32,13 +25,9 @@ readcsv <- function(x) {
   stats::setNames(df, tolower(names(df)))
 }
 
-strextract <- function(str, pattern) regmatches(str, gregexpr(pattern, str))
-
 # from xfun
 is_windows <- function() .Platform$OS.type == "windows"
 is_macos <- function() unname(Sys.info()["sysname"] == "Darwin")
-is_linux <- function() unname(Sys.info()["sysname"] == "Linux")
-is_arm64 <- function() Sys.info()[["machine"]] == "arm64"
 dir_exists <- function(x) utils::file_test("-d", x)
 pkg_file = function(..., mustWork = TRUE) {
   system.file(..., package = 'rgnparser', mustWork = mustWork)
