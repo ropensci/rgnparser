@@ -19,7 +19,7 @@ Docs: <https://docs.ropensci.org/rgnparser/>
 ``` r
 install.packages("rgnparser")
 # OR
-remotes::install_github("ropensci/rgnparser")
+pak::pkg_install("ropensci/rgnparser")
 ```
 
 ``` r
