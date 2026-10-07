@@ -1,9 +1,12 @@
-
 assert <- function(x, y) {
   if (!is.null(x)) {
     if (!inherits(x, y)) {
-      stop(deparse(substitute(x)), " must be of class ",
-        paste0(y, collapse = ", "), call. = FALSE)
+      stop(
+        deparse(substitute(x)),
+        " must be of class ",
+        paste0(y, collapse = ", "),
+        call. = FALSE
+      )
     }
   }
 }
@@ -29,7 +32,7 @@ readcsv <- function(x) {
 is_windows <- function() .Platform$OS.type == "windows"
 is_macos <- function() unname(Sys.info()["sysname"] == "Darwin")
 dir_exists <- function(x) utils::file_test("-d", x)
-pkg_file = function(..., mustWork = TRUE) {
+pkg_file <- function(..., mustWork = TRUE) {
   system.file(..., package = 'rgnparser', mustWork = mustWork)
 }
 

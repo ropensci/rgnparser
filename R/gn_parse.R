@@ -44,15 +44,24 @@ gn_parse <- function(
   cultivar = FALSE,
   capitalize = FALSE,
   diaereses = FALSE,
-  details = FALSE) {
-
+  details = FALSE
+) {
   gnparser_exists()
   ver_check(1)
   assert(x, "character")
   file <- tempfile(fileext = ".txt")
   on.exit(unlink(file))
   cat(x, file = file, sep = "\n")
-  res <- parse_one(file, "compact", threads, batch_size,
-    ignore_tags, cultivar, capitalize, diaereses, details)
+  res <- parse_one(
+    file,
+    "compact",
+    threads,
+    batch_size,
+    ignore_tags,
+    cultivar,
+    capitalize,
+    diaereses,
+    details
+  )
   lapply(strsplit(res, "\n")[[1]], jsonlite::fromJSON)
 }

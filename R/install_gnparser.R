@@ -27,9 +27,10 @@
 #' installed. This may be useful when upgrading gnparser.
 #' @export
 
-install_gnparser = function(version, force) {
-   lifecycle::deprecate_stop(
-      when = "0.3.0",
-      what = "install_gnparser()",
-      details = "Please see help page for deprecation reason and solution.")
+install_gnparser <- function(version, force) {
+  lifecycle::deprecate_stop(
+    when = "0.3.0",
+    what = "install_gnparser()",
+    details = "Please see help page for deprecation reason and solution."
+  )
 }

@@ -22,8 +22,8 @@ gn_parse_tidy <- function(
   cultivar = FALSE,
   capitalize = FALSE,
   diaereses = FALSE,
-  ignore_tags = FALSE) {
-
+  ignore_tags = FALSE
+) {
   gnparser_exists()
   ver_check(1)
   assert(x, "character")
