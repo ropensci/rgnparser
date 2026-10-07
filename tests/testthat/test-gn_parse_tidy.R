@@ -2,8 +2,11 @@ skip_on_cran()
 skip_on_ci()
 
 test_that("gn_parse_tidy", {
-  x <- c("Quadrella steyermarkii (Standl.) Iltis & Cornejo",
-    "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
+  x <- c(
+    "Quadrella steyermarkii (Standl.) Iltis & Cornejo",
+    "Parus major Linnaeus, 1788",
+    "Helianthus annuus var. texanus"
+  )
   z <- gn_parse_tidy(x)
 
   expect_is(z, "data.frame")
@@ -15,5 +18,5 @@ test_that("gn_parse_tidy", {
   name <- "Parus major Linnaeus, 1788"
   w <- gn_parse_tidy(name)
   expect_equal(w$verbatim, name)
-  expect_equal(w$authorship, "Linnaeus 1788")
+  expect_equal(w$authorship, "Linnaeus, 1788")
 })
