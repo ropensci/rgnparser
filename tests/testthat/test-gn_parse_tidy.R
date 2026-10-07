@@ -2,8 +2,11 @@ skip_on_cran()
 skip_on_ci()
 
 test_that("gn_parse_tidy", {
-  x <- c("Quadrella steyermarkii (Standl.) Iltis & Cornejo",
-    "Parus major Linnaeus, 1788", "Helianthus annuus var. texanus")
+  x <- c(
+    "Quadrella steyermarkii (Standl.) Iltis & Cornejo",
+    "Parus major Linnaeus, 1788",
+    "Helianthus annuus var. texanus"
+  )
   z <- gn_parse_tidy(x)
 
   expect_is(z, "data.frame")

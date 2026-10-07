@@ -1,10 +1,10 @@
 #' gn_version
-#' 
+#'
 #' get gnparser version information
-#' 
+#'
 #' @export
 #' @return named list, with `version` and `build`
-#' @examples 
+#' @examples
 #' trys <- function(x) try(x, silent=TRUE)
 #' if (interactive()) {
 #' trys(gn_version())
@@ -13,7 +13,9 @@ gn_version <- function() {
   gnparser_exists()
   # z <- gnparser_cmd("-V", error = FALSE)
   z <- gnparser_cmd("-V", error = FALSE)
-  if (z$status != 0) z <- gnparser_cmd("-v", error = FALSE)
+  if (z$status != 0) {
+    z <- gnparser_cmd("-v", error = FALSE)
+  }
   err_chk(z)
   process_version_string(z$stdout)
   # txt <- rawToChar(z$stdout)
